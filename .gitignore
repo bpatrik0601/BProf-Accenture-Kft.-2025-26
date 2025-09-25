@@ -1,0 +1,33 @@
+# This is a basic .gitignore file for a Java project using Maven in VS Code and 
+# IntelliJ IDEA by forking.
+
+# Maven build files
+/target/
+*.jar
+*.war
+*.ear
+
+# Java build files
+*.class
+*.log
+*.ctxt
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code files
+.vscode/
+
+# Database + cache files
+*.db
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Playwright riports + cache
+playwright-report/
+test-results/
