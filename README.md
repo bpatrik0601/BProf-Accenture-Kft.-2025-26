@@ -2,3 +2,4 @@
 University project for test automation framework development
 
 first commit - Empty repository --> Project initialization
+second commit - API Client created
