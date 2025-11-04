@@ -1,9 +1,13 @@
+/* 
+Ez az elso, kiindulo teszt POM, a kesobbiekben a projektbol eltavolitasra kerul
+*/
+
 package com.example.pages;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitUntilState;
 
-public class MatchPage {
+public class MatchPageTest {
     private final Page page;
 
     // UI objects' selectors
@@ -14,7 +18,7 @@ public class MatchPage {
     private final String totalshotsSelector = "totalshots";
     private final String possessionSelector = "possession";
     
-    public MatchPage(Page page) {
+    public MatchPageTest(Page page) {
         this.page = page;
     }
 
