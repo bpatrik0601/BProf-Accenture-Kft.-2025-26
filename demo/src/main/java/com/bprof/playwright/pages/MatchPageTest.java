@@ -2,7 +2,7 @@
 Ez az elso, kiindulo teszt POM, a kesobbiekben a projektbol eltavolitasra kerul
 */
 
-package com.example.pages;
+package com.bprof.playwright.pages;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitUntilState;

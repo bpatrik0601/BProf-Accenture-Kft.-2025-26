@@ -1,11 +1,11 @@
-package tests;
+package ui.tests;
 
+import com.bprof.playwright.pages.MatchPageTest;
 import com.microsoft.playwright.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.*;
-import com.example.pages.MatchPageTest;
 
 // UI test
 public class MatchTest {
