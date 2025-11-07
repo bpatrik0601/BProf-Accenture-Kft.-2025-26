@@ -1,6 +1,6 @@
-package tests;
+package api;
 
-import com.example.clients.APIClient;
+import com.bprof.playwright.clients.APIClient;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.RequestOptions;
 

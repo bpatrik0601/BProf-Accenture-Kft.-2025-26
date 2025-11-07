@@ -1,11 +1,11 @@
-package tests;
+package ui.tests;
 
+import com.bprof.playwright.pages.MatchPageTest;
 import com.microsoft.playwright.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.*;
-import com.example.pages.MatchPage;
 
 // UI test
 public class MatchTest {
@@ -26,7 +26,7 @@ public class MatchTest {
 
     @Test
     void testMatchPageTitle() {
-        MatchPage matchPage = new MatchPage(page);
+        MatchPageTest matchPage = new MatchPageTest(page);
         matchPage.goTo();
         String title = matchPage.getTitle();
         assertTrue(title.contains("Sofascore"));

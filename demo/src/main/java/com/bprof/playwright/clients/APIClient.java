@@ -1,4 +1,4 @@
-package com.example.clients;
+package com.bprof.playwright.clients;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.RequestOptions;
