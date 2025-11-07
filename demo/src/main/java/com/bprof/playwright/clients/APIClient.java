@@ -15,6 +15,11 @@ public class APIClient {
         );
     }
 
+
+    public APIClient(Playwright playwright) {
+        this(playwright, Map.of()); // Clear header map constructor
+    }
+
     public APIResponse get(String url) {
         return request.get(url);
     }

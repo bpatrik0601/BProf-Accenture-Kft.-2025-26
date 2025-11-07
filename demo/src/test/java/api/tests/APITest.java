@@ -1,4 +1,4 @@
-package api;
+package api.tests;
 
 import com.bprof.playwright.clients.APIClient;
 import com.microsoft.playwright.*;
