@@ -10,10 +10,10 @@ public class LocalAPITest {
 
     @Test
     void parseSimpleJson() throws Exception {
-        String json = "{ \"team\": \"Barcelona\", \"goals\": 3 }";
+        String json_example = "{ \"team\": \"Barcelona\", \"goals\": 3 }";
 
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode node = mapper.readTree(json);
+        JsonNode node = mapper.readTree(json_example);
 
         assertEquals("Barcelona", node.get("team").asText());
         assertEquals(3, node.get("goals").asInt());

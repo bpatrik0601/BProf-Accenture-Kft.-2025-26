@@ -5,5 +5,5 @@ Feature: Dashboard display
 
   Scenario: Load and display team data
     Given the dashboard is opened
-    When the system loads "matchData.json"
+    When the system loads "matches.json"
     Then the home and away teams should be shown

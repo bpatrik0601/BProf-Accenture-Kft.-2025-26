@@ -21,13 +21,6 @@ public class ApiSteps {
         response = apiClient.get(url);
     }
 
-    @When("I send a POST request to {string} with body:")
-    public void sendPostRequest(String url, String body) {
-        response = apiClient.post(url, com.microsoft.playwright.options.RequestOptions.create()
-                .setHeader("Content-Type", "application/json")
-                .setData(body));
-    }
-
     @Then("the response status should be {int}")
     public void checkStatus(int status) {
         assertEquals(status, response.status());

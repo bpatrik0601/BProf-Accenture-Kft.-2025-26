@@ -20,6 +20,7 @@ public class APIClient {
         this(playwright, Map.of()); // Clear header map constructor
     }
 
+    
     public APIResponse get(String url) {
         return request.get(url);
     }

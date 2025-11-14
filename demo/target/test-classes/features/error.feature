@@ -5,5 +5,5 @@ Feature: Error handling
 
   Scenario: Invalid JSON data triggers an error message
     Given the dashboard is opened
-    When the system loads "invalidData.json"
+    When the system loads "invalid-matches.json"
     Then an error message should appear
