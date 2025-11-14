@@ -37,8 +37,8 @@ public class MatchDetailsPage {
 
     // Utility method – value parsing
     private String getStatisticValue(String label) {
-        String text = getStatisticByLabel(label).innerText(); // pl. "Goals: 3 - 1"
-        return text.split(":")[1].trim();                     // "3 - 1"
+        String text = getStatisticByLabel(label).innerText(); // e.g. "Goals: 3 - 1"
+        return text.split(":")[1].trim();                     // --> "3 - 1"
     }
 
     // Specific statistic getters
