@@ -9,19 +9,21 @@ public class StatisticsSteps {
     JSONObject statistics;
     JSONObject selectedMatch;
 
-    @Given("the dashboard is opened")
-    public void openDashboard() {
-        System.out.println("Dashboard opened");
+    @Given("the statistics data exists")
+    public void statisticsDataExists() throws Exception {
+        // Precondition: statistics data file is available (in resources/data_JSON_for_offline_fallback/ folder)
+        Path path = Paths.get("src/test/resources/data_JSON_for_offline_fallback/match-statistics.json");
+        assertTrue(Files.exists(path), "Statistics data file should exist");
     }
 
-    @When("the system loads {string}")
+    @When("the system loads matches' statistics {string}")
     public void loadStatisticsFile(String fileName) throws Exception {
         String path = "src/test/resources/data_JSON_for_offline_fallback/" + fileName;
         String json = Files.readString(Paths.get(path));
         statistics = new JSONObject(json);
     }
 
-    @When("the user selects match {string}")
+    @And("the user selects match {string}")
     public void selectMatch(String matchId) {
         selectedMatch = statistics.getJSONObject(matchId);
     }

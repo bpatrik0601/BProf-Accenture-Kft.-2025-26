@@ -26,7 +26,7 @@ public class ApiSteps {
         assertEquals(status, response.status());
     }
 
-    @Then("the response body should contain {string}")
+    @And("the response body should contain {string}")
     public void checkBodyContains(String text) {
         assertTrue(response.text().contains(text));
     }
