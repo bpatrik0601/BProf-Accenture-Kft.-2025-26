@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.*;
 
 // UI test
-public class MatchTest {
+public class nonProjectMatchTest {
     static Playwright playwright;
     static Browser browser;
     Page page;
