@@ -1,5 +1,6 @@
 /* 
-Ez az elso, kiindulo teszt POM, a kesobbiekben a projektbol eltavolitasra kerul
+First, initial / prototype version page object model for a football match page using Playwright in Java.
+Will be used in PrototypeMatchTest.java for UI testing and later removed from the project.
 */
 
 package com.bprof.playwright.pages;
@@ -7,7 +8,7 @@ package com.bprof.playwright.pages;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitUntilState;
 
-public class MatchPageTest {
+public class PrototypeMatchPage {
     private final Page page;
 
     // UI objects' selectors
@@ -18,7 +19,7 @@ public class MatchPageTest {
     private final String totalshotsSelector = "totalshots";
     private final String possessionSelector = "possession";
     
-    public MatchPageTest(Page page) {
+    public PrototypeMatchPage(Page page) {
         this.page = page;
     }
 

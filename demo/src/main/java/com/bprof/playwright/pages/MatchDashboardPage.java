@@ -1,5 +1,7 @@
 package com.bprof.playwright.pages;
 
+import java.util.List;
+
 import com.bprof.playwright.base.BasePage;
 import com.bprof.playwright.elements.Element;
 import com.microsoft.playwright.Locator;
@@ -8,7 +10,7 @@ import com.microsoft.playwright.Page;
 public class MatchDashboardPage extends BasePage {
 
     // Selector constants – Separation for better maintainability
-    private static final String STATUS_MESSAGE_SELECTOR = "p";
+    private static final String STATUS_MESSAGE_SELECTOR = "[data-testid='status-message']";
     private static final String LEAGUE_HEADERS_SELECTOR = ".match-list h3";
     private static final String MATCH_CARD_SELECTOR = ".match-card";
 
@@ -21,19 +23,28 @@ public class MatchDashboardPage extends BasePage {
         return new Element(page.locator(STATUS_MESSAGE_SELECTOR));
     }
 
-    public Element getLeagueHeaders() {
-        return new Element(page.locator(LEAGUE_HEADERS_SELECTOR));
+    public List<Element> getLeagueHeaders() {
+        return page.locator(LEAGUE_HEADERS_SELECTOR)
+                   .all()
+                   .stream()
+                   .map(Element::new)
+                   .toList();
     }
 
-    public Element getAllMatchCards() {
-        return new Element(page.locator(MATCH_CARD_SELECTOR));
+    public List<Element> getAllMatchCards() {
+        return page.locator(MATCH_CARD_SELECTOR)
+                   .all()
+                   .stream()
+                   .map(Element::new)
+                   .toList();
     }
 
     public Element getMatchCardByTeam(String teamName) {
-        Locator locator = page.locator(MATCH_CARD_SELECTOR).filter(new Locator.FilterOptions().setHasText(teamName));
+        Locator locator = page.locator(MATCH_CARD_SELECTOR)
+                              .filter(new Locator.FilterOptions().setHasText(teamName));
         return new Element(locator);
     }
-    
+
     
     // Actions --> utility methods
     
@@ -64,6 +75,11 @@ public class MatchDashboardPage extends BasePage {
     - The CSS version (a[href*='/match/...']) is faster and shorter.
     - The XPath version (//a[contains(@href,'/match/...')]) is more flexible if you need to combine more complex conditions.
     */
+
+    public void waitForMatches() { // wait until match card elements are loaded
+        page.waitForSelector(MATCH_CARD_SELECTOR);
+    }
+
     public void clickMatchById(String matchId) {
         page.locator("a[href*='/match/" + matchId + "']").click();
     }

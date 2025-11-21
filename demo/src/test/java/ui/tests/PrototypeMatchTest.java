@@ -1,6 +1,11 @@
+/* 
+First, initial / prototype version UI test for a football match page using Playwright in Java.
+Will be later removed from the project.
+*/
+
 package ui.tests;
 
-import com.bprof.playwright.pages.MatchPageTest;
+import com.bprof.playwright.pages.PrototypeMatchPage;
 import com.microsoft.playwright.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -8,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.*;
 
 // UI test
-public class MatchTest {
+public class PrototypeMatchTest {
     static Playwright playwright;
     static Browser browser;
     Page page;
@@ -26,7 +31,7 @@ public class MatchTest {
 
     @Test
     void testMatchPageTitle() {
-        MatchPageTest matchPage = new MatchPageTest(page);
+        PrototypeMatchPage matchPage = new PrototypeMatchPage(page);
         matchPage.goTo();
         String title = matchPage.getTitle();
         assertTrue(title.contains("Sofascore"));
