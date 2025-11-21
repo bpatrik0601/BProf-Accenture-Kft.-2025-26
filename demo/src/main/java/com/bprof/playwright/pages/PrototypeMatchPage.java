@@ -1,5 +1,5 @@
 /* 
-First, initial / prototype version page object model for a football match page using Playwright in Java.
+First, initial / prototype version page object model for a football match page using Playwright in Java. (--> originally MatchPage.java)
 Will be used in PrototypeMatchTest.java for UI testing and later removed from the project.
 */
 
