@@ -1,0 +1,3 @@
+api\APITest.class
+api\LocalAPITest.class
+ui\tests\MatchTest.class

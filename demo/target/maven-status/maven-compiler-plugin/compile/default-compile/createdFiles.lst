@@ -1,0 +1,4 @@
+com\bprof\playwright\pages\MatchDetailsPage.class
+com\bprof\playwright\pages\MatchPageTest.class
+com\bprof\playwright\clients\APIClient.class
+com\bprof\playwright\pages\MatchDashboardPage.class

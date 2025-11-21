@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: tests.MatchTest
+Test set: api.APITest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.40 s -- in tests.MatchTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.74 s -- in api.APITest
