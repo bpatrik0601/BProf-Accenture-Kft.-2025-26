@@ -1,11 +1,11 @@
 package com.bprof.playwright.pages;
 
+import com.bprof.playwright.base.BasePage;
 import com.bprof.playwright.elements.Element;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class MatchDashboardPage {
-    private final Page page;
+public class MatchDashboardPage extends BasePage {
 
     // Selector constants – Separation for better maintainability
     private static final String STATUS_MESSAGE_SELECTOR = "p";
@@ -13,7 +13,7 @@ public class MatchDashboardPage {
     private static final String MATCH_CARD_SELECTOR = ".match-card";
 
     public MatchDashboardPage(Page page) {
-        this.page = page;
+        super(page);
     }
 
     // Elements

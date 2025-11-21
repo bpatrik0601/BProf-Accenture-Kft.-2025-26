@@ -1,13 +1,13 @@
 package com.bprof.playwright.pages;
 
+import com.bprof.playwright.base.BasePage;
 import com.bprof.playwright.elements.Element;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
 import java.util.List;
 
-public class MatchDetailsPage {
-    private final Page page;
+public class MatchDetailsPage extends BasePage {
 
     // Selector constants – Separation for better maintainability
     private static final String LOADING_SELECTOR = "p:has-text('Loading match statistics')";
@@ -16,7 +16,7 @@ public class MatchDetailsPage {
     private static final String STATISTICS_SELECTOR = "ul li";
 
     public MatchDetailsPage(Page page) {
-        this.page = page;
+        super(page);
     }
 
     // Elements
