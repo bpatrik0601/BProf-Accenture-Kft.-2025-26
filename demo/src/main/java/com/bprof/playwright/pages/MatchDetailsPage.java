@@ -1,44 +1,67 @@
 package com.bprof.playwright.pages;
 
+import com.bprof.playwright.base.BasePage;
+import com.bprof.playwright.elements.Element;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class MatchDetailsPage {
-    private final Page page;
+import java.util.List;
+
+public class MatchDetailsPage extends BasePage {
+
+    // Selector constants – Separation for better maintainability
+    private static final String LOADING_SELECTOR = "p:has-text('Loading match statistics')";
+    private static final String TEAM_NAMES_SELECTOR = "h3";
+    private static final String SCORE_SELECTOR = "p:has-text('Score')";
+    private static final String STATISTICS_SELECTOR = "ul li";
 
     public MatchDetailsPage(Page page) {
-        this.page = page;
+        super(page);
     }
 
-    public Locator getLoadingMessage() {
-        return page.locator("p:has-text('Loading match statistics')");
+    // Elements
+    public Element getLoadingMessage() {
+        return new Element(page.locator(LOADING_SELECTOR));
     }
 
-    public Locator getTeamNames() {
-        return page.locator("h3"); // .click((ClickOptions) options: null)); -> ennek vizsgalata a kovetkezo commit-okban
+    public Element getTeamNames() {
+        return new Element(page.locator(TEAM_NAMES_SELECTOR));
     }
 
-    public Locator getScore() {
-        return page.locator("p:has-text('Score')");
+    public Element getScore() {
+        return new Element(page.locator(SCORE_SELECTOR));
     }
 
-    public Locator getStatisticByLabel(String label) {
-        return page.locator("ul li:has-text('" + label + "')");
+    public Element getStatisticByLabel(String label) {
+        Locator locator = page.locator(STATISTICS_SELECTOR).filter(new Locator.FilterOptions().setHasText(label));
+        return new Element(locator);
     }
 
+    // Utility method – value parsing
+    private String getStatisticValue(String label) {
+        String text = getStatisticByLabel(label).getText();  // e.g. "Goals: 3 - 1"
+        return text.split(":")[1].trim();             //   --> "3 - 1"
+    }
+
+    // Specific statistic getters
     public String getGoals() {
-        return getStatisticByLabel("Goals").innerText();
+        return getStatisticValue("Goals");
     }
 
     public String getShotsOnTarget() {
-        return getStatisticByLabel("Shots on Target").innerText();
+        return getStatisticValue("Shots on Target");
     }
 
     public String getPossession() {
-        return getStatisticByLabel("Possession").innerText();
+        return getStatisticValue("Possession");
     }
 
     public String getFouls() {
-        return getStatisticByLabel("Fouls").innerText();
+        return getStatisticValue("Fouls");
+    }
+
+    // Extra utility – List all statistics
+    public List<String> getAllStatistics() {
+        return page.locator(STATISTICS_SELECTOR).allInnerTexts();
     }
 }
