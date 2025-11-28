@@ -10,7 +10,7 @@ import org.junit.jupiter.api.*;
 import com.bprof.playwright.elements.Element;
 import com.bprof.playwright.pages.MatchDashboardPage;
 
-public class MatchDashboardTestFlow { // status message, number of match cards, click navigation
+public class MatchDashboardFlowTest { // status message, number of match cards, click navigation
     static Playwright playwright;
     static Browser browser;
     Page page;

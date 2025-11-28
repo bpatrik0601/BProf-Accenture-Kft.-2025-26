@@ -8,7 +8,7 @@ import org.junit.jupiter.api.*;
 
 import com.bprof.playwright.pages.MatchDetailsPage;
 
-public class MatchDetailsTestFlow { // loading message, team names, score, statistics
+public class MatchDetailsFlowTest { // loading message, team names, score, statistics
     static Playwright playwright;
     static Browser browser;
     Page page;

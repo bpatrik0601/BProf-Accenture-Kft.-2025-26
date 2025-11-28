@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ui.tests.MatchDetailsFlowTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 34.22 s -- in ui.tests.MatchDetailsFlowTest
