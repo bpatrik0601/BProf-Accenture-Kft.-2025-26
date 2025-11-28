@@ -28,5 +28,4 @@ public class MatchDetailsElements extends BasePage {
         this.score = page.locator(SCORE_SELECTOR);
         this.statistics = page.locator(STATISTICS_SELECTOR);
     }
-    
 }

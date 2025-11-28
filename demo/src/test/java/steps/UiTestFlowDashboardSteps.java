@@ -54,7 +54,7 @@ public class UiTestFlowDashboardSteps {
         Assertions.assertTrue(actualHeaders.containsAll(expectedHeaders));
     }
 
-    @Then("I should not see {string}")
+    @And("I should not see {string}")
     public void notToBeSeen(String text) {
         List<String> actualHeaders = dashboard.getLeagueHeadersText();
         Assertions.assertFalse(actualHeaders.contains(text),

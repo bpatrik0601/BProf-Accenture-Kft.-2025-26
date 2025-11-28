@@ -18,7 +18,7 @@ Feature: Matches' Dashboard TestFlow
       | La Liga         |
       | Premier League  |
       | Champions League|
-    And I should not see "League 1"
+    And I should not see "Ligue 1"
 
   Scenario: Match count greater than zero
     Given I open the match dashboard
