@@ -2,47 +2,48 @@ package com.bprof.playwright.pages;
 
 import java.util.List;
 
-import com.bprof.playwright.base.BasePage;
-import com.bprof.playwright.elements.Element;
+import com.bprof.playwright.elements.MatchDashboardElements;
+import com.bprof.playwright.wrappers.GeneralElementWrapper;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class MatchDashboardPage extends BasePage {
-
-    // Selector constants – Separation for better maintainability
-    private static final String STATUS_MESSAGE_SELECTOR = "[data-testid='status-message']";
-    private static final String LEAGUE_HEADERS_SELECTOR = ".match-list h3";
-    private static final String MATCH_CARD_SELECTOR = ".match-card";
+public class MatchDashboardPage extends MatchDashboardElements {
 
     public MatchDashboardPage(Page page) {
         super(page);
     }
 
     // Elements
-    public Element getStatusMessage() {
-        return new Element(page.locator(STATUS_MESSAGE_SELECTOR));
+    public GeneralElementWrapper getStatusMessage() {
+        return statusMessage;
     }
 
-    public List<Element> getLeagueHeaders() {
-        return page.locator(LEAGUE_HEADERS_SELECTOR)
+    /* 
+    public List<GeneralElementWrapper> getLeagueHeaders() {
+        return leagueHeaders.getLocator()
                    .all()
                    .stream()
-                   .map(Element::new)
+                   .map(GeneralElementWrapper::new)
+                   .toList();
+    }
+    */ 
+   // Simpler solution:
+   public List<String> getLeagueHeadersText() {
+        return leagueHeaders.getLocator().allInnerTexts();
+    }
+
+    public List<GeneralElementWrapper> getAllMatchCards() {
+        return matchCards.getLocator()
+                   .all()
+                   .stream()
+                   .map(GeneralElementWrapper::new)
                    .toList();
     }
 
-    public List<Element> getAllMatchCards() {
-        return page.locator(MATCH_CARD_SELECTOR)
-                   .all()
-                   .stream()
-                   .map(Element::new)
-                   .toList();
-    }
-
-    public Element getMatchCardByTeam(String teamName) {
-        Locator locator = page.locator(MATCH_CARD_SELECTOR)
+    public GeneralElementWrapper getMatchCardByTeam(String teamName) {
+        Locator locator = matchCards.getLocator()
                               .filter(new Locator.FilterOptions().setHasText(teamName));
-        return new Element(locator);
+        return new GeneralElementWrapper(locator);
     }
 
     
@@ -77,7 +78,7 @@ public class MatchDashboardPage extends BasePage {
     */
 
     public void waitForMatches() { // wait until match card elements are loaded
-        page.waitForSelector(MATCH_CARD_SELECTOR);
+        page.waitForSelector(matchCards.getLocator().toString());
     }
 
     public void clickMatchById(String matchId) {
@@ -89,7 +90,7 @@ public class MatchDashboardPage extends BasePage {
     }
 
     public int getMatchCount() {
-        return page.locator(MATCH_CARD_SELECTOR).count();
+        return matchCards.getLocator().count();
     }
 
     public String getStatusMessageText() {

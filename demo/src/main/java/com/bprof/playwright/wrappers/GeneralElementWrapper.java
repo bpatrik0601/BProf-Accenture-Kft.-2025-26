@@ -1,12 +1,12 @@
-package com.bprof.playwright.elements;
+package com.bprof.playwright.wrappers;
 
 import com.microsoft.playwright.Locator;
 
 // Wrapper class for Playwright Locator to represent web elements
-public class Element {
+public class GeneralElementWrapper {
     private final Locator locator;
 
-    public Element(Locator locator) {
+    public GeneralElementWrapper(Locator locator) {
         this.locator = locator;
     }
 
