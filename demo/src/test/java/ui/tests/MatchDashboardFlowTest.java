@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.*;
 
 import com.bprof.playwright.pages.MatchDashboardPage;
-import com.bprof.playwright.wrappers.GeneralElementWrapper;
 
 public class MatchDashboardFlowTest { // status message, number of match cards, click navigation
     static Playwright playwright;
@@ -43,10 +42,8 @@ public class MatchDashboardFlowTest { // status message, number of match cards, 
     void testLeagueHeadersDisplayed() {
         dashboard.waitForMatches();
 
-        // League headers list as Element objects
-        List<GeneralElementWrapper> headers = dashboard.getLeagueHeaders();
         // League headers text list for easier assertions
-        List<String> texts = headers.stream().map(GeneralElementWrapper::getText).toList();
+        List<String> texts = dashboard.getLeagueHeadersText();
         
         Assertions.assertTrue(texts.contains("La Liga"));
         Assertions.assertTrue(texts.contains("Premier League"));
