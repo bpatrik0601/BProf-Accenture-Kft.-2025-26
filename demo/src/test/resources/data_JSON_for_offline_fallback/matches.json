@@ -1,0 +1,77 @@
+{
+  "events": [
+  {
+    "id": 1001,
+    "date": "2023-04-15T18:30:00Z",
+    "league": "La Liga",
+    "homeTeam": "Barcelona",
+    "awayTeam": "Valencia",
+    "homeScore": 3,
+    "awayScore": 1
+  },
+  {
+    "id": 1002,
+    "date": "2023-04-16T15:00:00Z",
+    "league": "La Liga",
+    "homeTeam": "Sevilla",
+    "awayTeam": "Real Madrid",
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "id": 1003,
+    "date": "2023-04-17T20:00:00Z",
+    "league": "La Liga",
+    "homeTeam": "Espanyol",
+    "awayTeam": "Atletico Madrid",
+    "homeScore": 0,
+    "awayScore": 1
+  },
+  {
+    "id": 1025,
+    "date": "2023-04-17T18:30:00Z",
+    "league": "Premier League",
+    "homeTeam": "Aston Villa",
+    "awayTeam": "Manchester United",
+    "homeScore": 2,
+    "awayScore": 1
+  },
+  {
+    "id": 1092,
+    "date": "2023-04-19T21:00:00Z",
+    "league": "Champions League",
+    "homeTeam": "Bayern Munich",
+    "awayTeam": "Paris Saint-Germain",
+    "homeScore": 3,
+    "awayScore": 3
+  },
+  
+  {
+    "id": 2001,
+    "date": "2024-05-01T19:00:00Z",
+    "league": "Bundesliga",
+    "homeTeam": "Borussia Dortmund",
+    "awayTeam": "RB Leipzig",
+    "homeScore": 4,
+    "awayScore": 0
+  },
+  {
+    "id": 3005,
+    "date": "2024-06-10T20:45:00Z",
+    "league": "Serie A",
+    "homeTeam": "Juventus",
+    "awayTeam": "Inter Milan",
+    "homeScore": 1,
+    "awayScore": 1
+  },
+  {
+    "id": 4007,
+    "date": "2024-07-22T18:00:00Z",
+    "league": "Premier League",
+    "homeTeam": "Liverpool",
+    "awayTeam": "Chelsea",
+    "homeScore": 5,
+    "awayScore": 2
+  }
+ ]
+}
