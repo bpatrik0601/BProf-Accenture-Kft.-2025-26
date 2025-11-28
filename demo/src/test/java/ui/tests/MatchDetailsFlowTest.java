@@ -46,7 +46,7 @@ public class MatchDetailsFlowTest { // loading message, team names, score, stati
     void testScoreDisplayedCorrectly() {
         page.navigate("http://localhost:4200/match/1001");
         page.waitForSelector(".score");
-        String scoreText = details.getScore().getText();
+        String scoreText = details.getScore().innerText();
         Assertions.assertEquals("Score: 3 - 1", scoreText);
     }
 

@@ -3,7 +3,8 @@ package com.bprof.playwright.elements;
 import com.microsoft.playwright.Page;
 
 import com.bprof.playwright.base.BasePage;
-import com.bprof.playwright.wrappers.GeneralElementWrapper;
+//import com.bprof.playwright.wrappers.GeneralElementWrapper;
+import com.microsoft.playwright.Locator;
 
 public class MatchDetailsElements extends BasePage {
 
@@ -14,18 +15,18 @@ public class MatchDetailsElements extends BasePage {
     protected static final String STATISTICS_SELECTOR = "ul li";
 
     // Elements
-    protected final GeneralElementWrapper loadingMessage;
-    protected final GeneralElementWrapper teamNames;
-    protected final GeneralElementWrapper score;
-    protected final GeneralElementWrapper statistics;
+    protected final Locator loadingMessage;
+    protected final Locator teamNames;
+    protected final Locator score;
+    protected final Locator statistics;
 
     public MatchDetailsElements(Page page) {
         super(page);
         
-        this.loadingMessage = new GeneralElementWrapper(page.locator(LOADING_SELECTOR));
-        this.teamNames = new GeneralElementWrapper(page.locator(TEAM_NAMES_SELECTOR));
-        this.score = new GeneralElementWrapper(page.locator(SCORE_SELECTOR));
-        this.statistics = new GeneralElementWrapper(page.locator(STATISTICS_SELECTOR));
+        this.loadingMessage = page.locator(LOADING_SELECTOR);
+        this.teamNames = page.locator(TEAM_NAMES_SELECTOR);
+        this.score = page.locator(SCORE_SELECTOR);
+        this.statistics = page.locator(STATISTICS_SELECTOR);
     }
     
 }

@@ -3,9 +3,10 @@ package com.bprof.playwright.pages;
 import java.util.List;
 
 import com.bprof.playwright.elements.MatchDashboardElements;
-import com.bprof.playwright.wrappers.GeneralElementWrapper;
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
+
+import com.microsoft.playwright.*; // import Page; Locator.
+import com.microsoft.playwright.options.WaitForSelectorState;
+
 
 public class MatchDashboardPage extends MatchDashboardElements {
 
@@ -14,7 +15,7 @@ public class MatchDashboardPage extends MatchDashboardElements {
     }
 
     // Elements
-    public GeneralElementWrapper getStatusMessage() {
+    public Locator getStatusMessage() {
         return statusMessage;
     }
 
@@ -29,21 +30,15 @@ public class MatchDashboardPage extends MatchDashboardElements {
     */ 
    // Simpler solution:
    public List<String> getLeagueHeadersText() {
-        return leagueHeaders.getLocator().allInnerTexts();
+        return leagueHeaders.allInnerTexts();
     }
 
-    public List<GeneralElementWrapper> getAllMatchCards() {
-        return matchCards.getLocator()
-                   .all()
-                   .stream()
-                   .map(GeneralElementWrapper::new)
-                   .toList();
+    public List<Locator> getAllMatchCards() {
+        return matchCards.all();
     }
 
-    public GeneralElementWrapper getMatchCardByTeam(String teamName) {
-        Locator locator = matchCards.getLocator()
-                              .filter(new Locator.FilterOptions().setHasText(teamName));
-        return new GeneralElementWrapper(locator);
+    public Locator getMatchCardByTeam(String teamName) {
+        return matchCards.filter(new Locator.FilterOptions().setHasText(teamName));
     }
 
     
@@ -77,9 +72,10 @@ public class MatchDashboardPage extends MatchDashboardElements {
     - The XPath version (//a[contains(@href,'/match/...')]) is more flexible if you need to combine more complex conditions.
     */
 
-    public void waitForMatches() { // wait until match card elements are loaded
-        page.waitForSelector(matchCards.getLocator().toString());
+    public void waitForMatches() {
+        matchCards.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
     }
+
 
     public void clickMatchById(String matchId) {
         page.locator("a[href*='/match/" + matchId + "']").click();
@@ -90,10 +86,10 @@ public class MatchDashboardPage extends MatchDashboardElements {
     }
 
     public int getMatchCount() {
-        return matchCards.getLocator().count();
+        return matchCards.count();
     }
 
     public String getStatusMessageText() {
-        return getStatusMessage().getText();
+        return getStatusMessage().innerText();
     }
 }

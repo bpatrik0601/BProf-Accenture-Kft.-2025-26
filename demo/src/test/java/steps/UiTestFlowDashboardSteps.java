@@ -1,0 +1,83 @@
+package steps;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Assertions;
+
+import com.microsoft.playwright.*; // import Playwright; Page; Browser; BrowserType.
+
+import com.bprof.playwright.pages.MatchDashboardPage;
+
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
+/* 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+*/
+import io.cucumber.java.en.*;
+
+public class UiTestFlowDashboardSteps {
+    private static Playwright playwright;
+    private static Browser browser;
+    private Page page;
+    private MatchDashboardPage dashboard;
+
+    @BeforeAll
+    public static void setupClass() {
+        playwright = Playwright.create();
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+    }
+
+
+    @Given("I open the match dashboard")
+    public void openDashboard() {
+        page = browser.newPage();
+        page.navigate("http://localhost:4200/");
+        dashboard = new MatchDashboardPage(page);
+    }
+
+    @When("the matches are loaded")
+    public void waitForMatches() {
+        dashboard.waitForMatches();
+    }
+
+    @Then("I should see the status message {string}")
+    public void checkStatusMessage(String expected) {
+        Assertions.assertEquals(expected, dashboard.getStatusMessageText());
+    }
+
+    @Then("I should see the following league headers:")
+    public void checkLeagueHeaders(io.cucumber.datatable.DataTable dataTable) {
+        List<String> expectedHeaders = dataTable.asList();
+        List<String> actualHeaders = dashboard.getLeagueHeadersText();
+        Assertions.assertTrue(actualHeaders.containsAll(expectedHeaders));
+    }
+
+    @Then("the match count should be {int}")
+    public void checkMatchCount(int expected) {
+        Assertions.assertEquals(expected, dashboard.getMatchCount());
+    }
+
+    @Then("the match count should be greater than {int}")
+    public void checkMatchCountGreater(int min) {
+        Assertions.assertTrue(dashboard.getMatchCount() > min);
+    }
+
+    @When("I click the match with id {string}")
+    public void clickMatchById(String matchId) {
+        dashboard.clickMatchById(matchId);
+    }
+
+    @Then("I should be navigated to {string}")
+    public void checkNavigation(String expectedUrlPart) {
+        Assertions.assertTrue(page.url().contains(expectedUrlPart));
+    }
+
+
+    @AfterAll
+    public static void tearDownClass() {
+        browser.close();
+        playwright.close();
+    }
+}

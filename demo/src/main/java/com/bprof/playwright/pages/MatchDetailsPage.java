@@ -1,6 +1,5 @@
 package com.bprof.playwright.pages;
 
-import com.bprof.playwright.wrappers.GeneralElementWrapper;
 import com.bprof.playwright.elements.MatchDetailsElements;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -14,41 +13,39 @@ public class MatchDetailsPage extends MatchDetailsElements {
     }
 
     // Elements - inherited from MatchDetailsElements
-    public GeneralElementWrapper getLoadingMessage() {
+    public Locator getLoadingMessage() {
         return loadingMessage;
     }
 
-    public GeneralElementWrapper getTeamNames() {
+    public Locator getTeamNames() {
         return teamNames;
     }
 
-    public GeneralElementWrapper getScore() {
+    public Locator getScore() {
         return score;
     }
 
-    public GeneralElementWrapper getStatistics() {
+    public Locator getStatistics() {
         return statistics;
     }
 
-    public GeneralElementWrapper getStatisticByLabel(String label) {
-        Locator locator = statistics.getLocator()
-            .filter(new Locator.FilterOptions().setHasText(label));
-        return new GeneralElementWrapper(locator);
+    public Locator getStatisticByLabel(String label) {
+        return statistics.filter(new Locator.FilterOptions().setHasText(label));
     }
 
     // Utility method – value parsing
     private String getStatisticValue(String label) {
-        String text = getStatisticByLabel(label).getText();  // e.g. "Goals: 3 - 1"
+        String text = getStatisticByLabel(label).innerText();  // e.g. "Goals: 3 - 1"
         return text.split(":")[1].trim();             //   --> "3 - 1"
     }
 
     // Specific statistic getters
     public String getTeamNamesText() {
-        return teamNames.getText();
+        return teamNames.innerText();
     }
 
     public String getScoreText() {
-        return score.getText();
+        return score.innerText();
     }
 
     public boolean isStatisticsVisible() {
@@ -77,6 +74,6 @@ public class MatchDetailsPage extends MatchDetailsElements {
 
     // Extra utility – List all statistics
     public List<String> getAllStatistics() {
-        return statistics.getLocator().allInnerTexts();
+        return statistics.allInnerTexts();
     }
 }

@@ -31,11 +31,11 @@ public class MatchDashboardFlowTest { // status message, number of match cards, 
     @Test
     void testStatusMessageChangesAfterLoad() {
         // Initial status message "Loading matches..."
-        Assertions.assertEquals("Loading matches...", dashboard.getStatusMessage().getText());
+        Assertions.assertEquals("Loading matches...", dashboard.getStatusMessage().innerText());
 
         // If match cards are loaded, status message should change and appear as "Matches loaded"
         dashboard.waitForMatches(); // replaces page.waitForSelector(".match-card");
-        Assertions.assertEquals("Matches loaded", dashboard.getStatusMessage().getText());
+        Assertions.assertEquals("Matches loaded", dashboard.getStatusMessage().innerText());
     }
 
     @Test

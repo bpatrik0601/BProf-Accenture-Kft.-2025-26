@@ -3,7 +3,8 @@ package com.bprof.playwright.elements;
 import com.microsoft.playwright.Page;
 
 import com.bprof.playwright.base.BasePage;
-import com.bprof.playwright.wrappers.GeneralElementWrapper;
+//import com.bprof.playwright.wrappers.GeneralElementWrapper;
+import com.microsoft.playwright.Locator;
 
 public class MatchDashboardElements extends BasePage {
 
@@ -12,17 +13,17 @@ public class MatchDashboardElements extends BasePage {
     private static final String LEAGUE_HEADERS_SELECTOR = ".match-list h3";
     private static final String MATCH_CARD_SELECTOR = ".match-card";
 
-    // Elements
-    protected final GeneralElementWrapper statusMessage;
-    protected final GeneralElementWrapper leagueHeaders;
-    protected final GeneralElementWrapper matchCards;
+    // Elements as Locators
+    protected final Locator statusMessage;
+    protected final Locator leagueHeaders;
+    protected final Locator matchCards;
 
     public MatchDashboardElements(Page page) {
         super(page);
-        
-        this.statusMessage = new GeneralElementWrapper(page.locator(STATUS_MESSAGE_SELECTOR));
-        this.leagueHeaders = new GeneralElementWrapper(page.locator(LEAGUE_HEADERS_SELECTOR));
-        this.matchCards = new GeneralElementWrapper(page.locator(MATCH_CARD_SELECTOR));
+
+        this.statusMessage = page.locator(STATUS_MESSAGE_SELECTOR);
+        this.leagueHeaders = page.locator(LEAGUE_HEADERS_SELECTOR);
+        this.matchCards = page.locator(MATCH_CARD_SELECTOR);
     }
     
 }
