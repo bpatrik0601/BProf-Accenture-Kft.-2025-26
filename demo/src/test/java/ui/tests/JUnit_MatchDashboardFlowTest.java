@@ -9,7 +9,7 @@ import org.junit.jupiter.api.*;
 
 import com.bprof.playwright.pages.MatchDashboardPage;
 
-public class MatchDashboardFlowTest { // status message, number of match cards, click navigation
+public class JUnit_MatchDashboardFlowTest { // status message, number of match cards, click navigation
     static Playwright playwright;
     static Browser browser;
     Page page;
@@ -48,7 +48,7 @@ public class MatchDashboardFlowTest { // status message, number of match cards, 
         Assertions.assertTrue(texts.contains("La Liga"));
         Assertions.assertTrue(texts.contains("Premier League"));
         Assertions.assertTrue(texts.contains("Champions League"));
-        Assertions.assertFalse(texts.contains("League 1"));
+        Assertions.assertFalse(texts.contains("Ligue 1"));
     }
 
     @Test // Basic smoke test for match count

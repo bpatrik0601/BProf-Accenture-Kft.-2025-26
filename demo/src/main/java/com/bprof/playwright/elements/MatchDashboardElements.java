@@ -25,5 +25,4 @@ public class MatchDashboardElements extends BasePage {
         this.leagueHeaders = page.locator(LEAGUE_HEADERS_SELECTOR);
         this.matchCards = page.locator(MATCH_CARD_SELECTOR);
     }
-    
 }
