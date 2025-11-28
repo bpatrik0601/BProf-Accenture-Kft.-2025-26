@@ -5,8 +5,6 @@ import java.util.List;
 import com.bprof.playwright.elements.MatchDashboardElements;
 
 import com.microsoft.playwright.*; // import Page; Locator.
-import com.microsoft.playwright.options.WaitForSelectorState;
-
 
 public class MatchDashboardPage extends MatchDashboardElements {
 
@@ -19,16 +17,6 @@ public class MatchDashboardPage extends MatchDashboardElements {
         return statusMessage;
     }
 
-    /* 
-    public List<GeneralElementWrapper> getLeagueHeaders() {
-        return leagueHeaders.getLocator()
-                   .all()
-                   .stream()
-                   .map(GeneralElementWrapper::new)
-                   .toList();
-    }
-    */ 
-   // Simpler solution:
    public List<String> getLeagueHeadersText() {
         return leagueHeaders.allInnerTexts();
     }
@@ -73,7 +61,15 @@ public class MatchDashboardPage extends MatchDashboardElements {
     */
 
     public void waitForMatches() {
-        matchCards.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
+    page.waitForSelector(".match-card"); // wait until at least one match card is present
+    }
+
+    public String getFirstMatchCardText() {
+        return matchCards.first().innerText();
+    }
+
+    public void clickFirstMatchCard() {
+        matchCards.first().click();
     }
 
 

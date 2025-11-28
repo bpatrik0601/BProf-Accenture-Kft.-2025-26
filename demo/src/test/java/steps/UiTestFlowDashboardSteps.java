@@ -54,6 +54,13 @@ public class UiTestFlowDashboardSteps {
         Assertions.assertTrue(actualHeaders.containsAll(expectedHeaders));
     }
 
+    @Then("I should not see {string}")
+    public void notToBeSeen(String text) {
+        List<String> actualHeaders = dashboard.getLeagueHeadersText();
+        Assertions.assertFalse(actualHeaders.contains(text),
+            "Unexpected league header: " + text);
+    }
+
     @Then("the match count should be {int}")
     public void checkMatchCount(int expected) {
         Assertions.assertEquals(expected, dashboard.getMatchCount());
@@ -62,6 +69,31 @@ public class UiTestFlowDashboardSteps {
     @Then("the match count should be greater than {int}")
     public void checkMatchCountGreater(int min) {
         Assertions.assertTrue(dashboard.getMatchCount() > min);
+    }
+
+    @Then("La Liga should have {int} matches")
+    public void laLigaShouldHaveMatches(int expectedCount) {
+        // Finding parent locator (div) for La Liga section
+        Locator laLigaSection = page.locator(".match-list div:has(h3:has-text('La Liga'))");
+
+        // Counting the match cards within that section
+        int actualCount = laLigaSection.locator(".match-card").count();
+
+        Assertions.assertEquals(expectedCount, actualCount,
+            "La Liga matches's count does not check up with expected: " + expectedCount);
+    }
+
+    @Then("the first match card should contain:")
+    public void theFirstMatchCardShouldContain(io.cucumber.datatable.DataTable dataTable) {
+        // First match card text
+        String firstCardText = dashboard.getAllMatchCards().get(0).innerText();
+
+        // DataTable rows compared against the first match card text
+        List<String> expectedLines = dataTable.asList();
+        for (String expected : expectedLines) {
+            Assertions.assertTrue(firstCardText.contains(expected),
+                "The first match-card doesn't contain: " + expected);
+        }
     }
 
     @When("I click the match with id {string}")
