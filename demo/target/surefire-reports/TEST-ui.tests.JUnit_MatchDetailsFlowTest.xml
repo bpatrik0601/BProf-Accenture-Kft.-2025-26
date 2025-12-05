@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="api.tests.LocalAPITest" time="0.359" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ui.tests.JUnit_MatchDetailsFlowTest" time="23.054" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,5 +58,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="parseSimpleJson" classname="api.tests.LocalAPITest" time="0.326"/>
+  <testcase name="testStatisticsVisibleAfterLoad" classname="ui.tests.JUnit_MatchDetailsFlowTest" time="3.458"/>
+  <testcase name="testScoreDisplayedCorrectly" classname="ui.tests.JUnit_MatchDetailsFlowTest" time="2.139"/>
+  <testcase name="testAllStatisticsListed" classname="ui.tests.JUnit_MatchDetailsFlowTest" time="1.873"/>
+  <testcase name="testShotsOnTargetStatistic" classname="ui.tests.JUnit_MatchDetailsFlowTest" time="1.836"/>
+  <testcase name="testPossessionStatistic" classname="ui.tests.JUnit_MatchDetailsFlowTest" time="1.929"/>
+  <testcase name="testFoulsStatistic" classname="ui.tests.JUnit_MatchDetailsFlowTest" time="1.906"/>
+  <testcase name="testTeamNamesAndDateDisplayed" classname="ui.tests.JUnit_MatchDetailsFlowTest" time="2.021"/>
+  <testcase name="testGoalsStatistic" classname="ui.tests.JUnit_MatchDetailsFlowTest" time="2.052"/>
 </testsuite>

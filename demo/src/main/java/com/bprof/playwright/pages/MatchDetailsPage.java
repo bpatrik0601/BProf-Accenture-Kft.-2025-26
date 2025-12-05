@@ -12,7 +12,7 @@ public class MatchDetailsPage extends MatchDetailsElements {
         super(page);
     }
 
-    // Elements - inherited from MatchDetailsElements
+    // Basic element getters
     public Locator getLoadingMessage() {
         return loadingMessage;
     }

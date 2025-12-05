@@ -1,0 +1,55 @@
+name: UI Test Pipeline
+
+on:
+  push:
+    branches: [ feature/add-ci-pipeline ]
+  pull_request:
+    branches: [ develop, main ]
+
+jobs:
+  ui-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Maven repo checkout
+      - name: Checkout Maven Playwright repo
+        uses: actions/checkout@v4
+
+      # 2. Angular repo checkout
+      - name: Checkout Angular repo
+        uses: actions/checkout@v4
+        with:
+          repository: bpatrik0601/BProf-Accenture-Kft.-2025-26--Angular-frontend
+          path: angular-frontend
+
+      # 3. Node.js environment setup for Angular server
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Angular dependencies
+        run: npm install --prefix angular-frontend
+
+      # 4. Angular server start in background
+      - name: Start Angular server
+        run: |
+          npm start --prefix angular-frontend &
+          npx wait-on http://localhost:4200
+
+      # 5. Java environment setup for Maven tests
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Run Maven tests
+        run: mvn test
+
+      # 6. Report artifact upload
+      - name: Upload Cucumber report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: target/cucumber-reports/*.html
