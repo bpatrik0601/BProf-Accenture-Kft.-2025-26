@@ -5,6 +5,7 @@ on:
     branches: [ feature/add-ci-pipeline ]
   pull_request:
     branches: [ develop, main ]
+  workflow_dispatch: # Manual trigger with "Run workflow" button for testing and debugging purposes
 
 jobs:
   ui-tests:
@@ -27,14 +28,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20' # /'20.19.0'
 
       - name: Install Angular dependencies
         run: npm install --prefix angular-frontend
 
       # 4. Angular server start in background
-      - name: Start Angular server
-        run: |
+      - name: Start Angular server # alternative: use static 'npx http-server' to serve the built Angular app from 'dist' folder
+        run: | # ng serve is a dev server, not for production use as it keeps the process running and blocks the the pipeline and the workflow
           npm start --prefix angular-frontend &
           npx wait-on http://localhost:4200
 
