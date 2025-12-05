@@ -48,6 +48,7 @@ jobs:
 
       - name: Run Maven tests
         run: mvn test
+        working-directory: ./demo # or 'demo'
 
       # 6. Report artifact upload
       - name: Upload Cucumber report
