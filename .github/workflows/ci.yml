@@ -47,7 +47,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Run Maven tests
-        run: mvn test
+        run: xvfb-run mvn test # xvfb-run -> to run tests in a virtual framebuffer X server (GUI simulation for headless environments like CI/CD) so that headed mode can be used and thus screenshots can also be captured
         working-directory: ./demo # or 'demo'
 
       # 6. Report artifact upload
