@@ -45,6 +45,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      
+      - name: Install Playwright deps via Maven
+        run: mvn exec:java -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps" # install Playwright dependencies (browsers, etc.) for Linux (Ubuntu) runner (-> sudo)
+        working-directory: ./demo
 
       - name: Run Maven tests
         run: xvfb-run mvn test # xvfb-run -> to run tests in a virtual framebuffer X server (GUI simulation for headless environments like CI/CD) so that headed mode can be used and thus screenshots can also be captured
