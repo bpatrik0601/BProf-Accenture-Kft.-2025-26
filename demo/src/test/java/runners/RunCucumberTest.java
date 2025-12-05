@@ -17,7 +17,7 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @Suite
 @ConfigurationParameter(
    key = GLUE_PROPERTY_NAME,
-   value = "steps" // steps package name
+   value = "steps,hooks" // steps + hooks package name (no spaces between commas!)
 )
 
 /* 

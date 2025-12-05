@@ -21,6 +21,7 @@ jobs:
         with:
           repository: bpatrik0601/BProf-Accenture-Kft.-2025-26--Angular-frontend
           path: angular-frontend
+          token: ${{ secrets.ANGULAR_REPO_TOKEN }} # Personal Access Token with the other private repo access
 
       # 3. Node.js environment setup for Angular server
       - name: Set up Node.js
