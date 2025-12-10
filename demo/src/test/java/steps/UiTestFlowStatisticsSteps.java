@@ -8,31 +8,24 @@ import com.microsoft.playwright.*; // import Playwright; Page; Browser; BrowserT
 
 import com.bprof.playwright.pages.MatchDetailsPage;
 
-import io.cucumber.java.AfterAll;
-import io.cucumber.java.BeforeAll;
 /* 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.en.And;
 */
 import io.cucumber.java.en.*;
 
+import hooks.Hooks;
+
 public class UiTestFlowStatisticsSteps {
-    private static Playwright playwright;
-    private static Browser browser;
     private Page page;
     private MatchDetailsPage details;
-
-    @BeforeAll
-    public static void setupClass() {
-        playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-    }
-
+    
 
     @Given("I open the match details for {string}")
     public void openMatchDetails(String matchId) {
-        page = browser.newPage();
+        page = Hooks.getPage();
         page.navigate("http://localhost:4200/match/" + matchId);
         details = new MatchDetailsPage(page);
     }
@@ -84,10 +77,4 @@ public class UiTestFlowStatisticsSteps {
         Assertions.assertTrue(actualStats.containsAll(expectedStats));
     }
 
-
-    @AfterAll
-    public static void tearDownClass() {
-        browser.close();
-        playwright.close();
-    }
 }

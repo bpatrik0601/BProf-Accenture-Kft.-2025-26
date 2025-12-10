@@ -1,0 +1,69 @@
+name: UI Test Pipeline
+
+on:
+  push:
+    branches: [ feature/add-ci-pipeline ]
+  pull_request:
+    branches: [ develop, main ]
+  workflow_dispatch: # Manual trigger with "Run workflow" button for testing and debugging purposes
+
+jobs:
+  ui-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Maven repo checkout
+      - name: Checkout Maven Playwright repo
+        uses: actions/checkout@v4
+
+      # 2. Angular repo checkout
+      - name: Checkout Angular repo
+        uses: actions/checkout@v4
+        with:
+          repository: bpatrik0601/BProf-Accenture-Kft.-2025-26--Angular-frontend
+          path: angular-frontend
+          token: ${{ secrets.ANGULAR_REPO_TOKEN }} # Personal Access Token with the other private repo access
+
+      # 3. Node.js environment setup for Angular server
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # /'20.19.0'
+
+      - name: Install Angular dependencies
+        run: npm install --prefix angular-frontend
+
+      # 4. Angular server start in background
+      - name: Start Angular server # alternative: use static 'npx http-server' to serve the built Angular app from 'dist' folder
+        run: | # ng serve is a dev server, not for production use as it keeps the process running and blocks the the pipeline and the workflow
+          npm start --prefix angular-frontend &
+          npx wait-on http://localhost:4200
+
+      # 5. Java environment setup for Maven tests
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      
+      - name: Install Playwright deps via Maven
+        run: mvn exec:java -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps" # install Playwright dependencies (browsers, etc.) for Linux (Ubuntu) runner (-> sudo)
+        working-directory: ./demo
+
+      - name: Run Maven tests
+        run: xvfb-run mvn test # xvfb-run -> to run tests in a virtual framebuffer X server (GUI simulation for headless environments like CI/CD) so that headed mode can be used and thus screenshots can also be captured
+        working-directory: ./demo # or 'demo'
+
+      # 6. Report artifact upload
+      - name: Upload Cucumber report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: target/cucumber-report.html
+
+      - name: Upload Cucumber JSON report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report-json
+          path: target/cucumber-report.json
+      

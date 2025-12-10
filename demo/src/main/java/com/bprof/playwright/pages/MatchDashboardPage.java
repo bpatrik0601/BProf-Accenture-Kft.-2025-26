@@ -12,12 +12,12 @@ public class MatchDashboardPage extends MatchDashboardElements {
         super(page);
     }
 
-    // Elements
+    // Basic element getters
     public Locator getStatusMessage() {
         return statusMessage;
     }
 
-   public List<String> getLeagueHeadersText() {
+    public List<String> getLeagueHeadersText() {
         return leagueHeaders.allInnerTexts();
     }
 

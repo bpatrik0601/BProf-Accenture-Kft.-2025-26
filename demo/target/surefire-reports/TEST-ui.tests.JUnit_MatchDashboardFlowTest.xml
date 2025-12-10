@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="api.tests.LocalAPITest" time="0.176" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ui.tests.JUnit_MatchDashboardFlowTest" time="40.82" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,5 +58,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="parseSimpleJson" classname="api.tests.LocalAPITest" time="0.16"/>
+  <testcase name="testMatchCountMatchesJsonData" classname="ui.tests.JUnit_MatchDashboardFlowTest" time="3.738"/>
+  <testcase name="testStatusMessageChangesAfterLoad" classname="ui.tests.JUnit_MatchDashboardFlowTest" time="3.546"/>
+  <testcase name="testMatchCountGroupedByLeague" classname="ui.tests.JUnit_MatchDashboardFlowTest" time="3.25"/>
+  <testcase name="testLeagueHeadersDisplayed" classname="ui.tests.JUnit_MatchDashboardFlowTest" time="3.365"/>
+  <testcase name="testMatchCardContent" classname="ui.tests.JUnit_MatchDashboardFlowTest" time="3.253"/>
+  <testcase name="testMatchCountGreaterThanZero" classname="ui.tests.JUnit_MatchDashboardFlowTest" time="3.318"/>
+  <testcase name="testClickMatchNavigatesToDetails" classname="ui.tests.JUnit_MatchDashboardFlowTest" time="3.423"/>
 </testsuite>

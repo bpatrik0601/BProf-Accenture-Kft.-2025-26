@@ -76,12 +76,15 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                <!-- Cucumber runner + Playwright tests (update: cucumber.features configuration to Surefire plugin) -->
                     <useModulePath>false</useModulePath>
                     <includes>
-                        <include>**/*Test.java</include>
+                        <!-- Cucumber runner + Gherkin tests only in CI (update: cucumber.features configuration to Surefire plugin) -->
                         <include>**/RunCucumberTest.java</include>
                     </includes>
+                    <excludes>
+                        <!-- JUnit tests excluded from CI-run -->
+                        <exclude>**/*Test.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
