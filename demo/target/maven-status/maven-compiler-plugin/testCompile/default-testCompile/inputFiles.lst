@@ -1,2 +1,12 @@
-C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\demo\src\test\java\tests\APITest.java
-C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\demo\src\test\java\tests\MatchTest.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\api\tests\APITestJUnit.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\api\tests\LocalAPITest.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\hooks\Hooks.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\runners\RunCucumberTest.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\steps\ApiSteps.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\steps\ErrorSteps.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\steps\StaticDataHandlingSteps.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\steps\StatisticsSteps.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\steps\UiTestFlowDashboardSteps.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\steps\UiTestFlowStatisticsSteps.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\ui\tests\JUnit_MatchDashboardFlowTest.java
+C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\src\test\java\ui\tests\JUnit_MatchDetailsFlowTest.java
