@@ -51,13 +51,10 @@ jobs:
         run: npx playwright install-deps
         working-directory: ./  # or ./angular-frontend if preferred
 
-      # 5. Angular server start in background (build + serve)
-      - name: Build Angular app
-        run: npm run build --prefix angular-frontend
-
-      - name: Serve Angular app
-        run: |
-          npx http-server angular-frontend/dist/angular-frontend -p 4200 &
+      # 5. Angular server start in background
+      - name: Start Angular server # alternative: use static 'npx http-server' to serve the built Angular app from 'dist' folder
+        run: | # ng serve is a dev server, not for production use as it keeps the process running and blocks the the pipeline and the workflow
+          npm start --prefix angular-frontend & 
           npx wait-on http://localhost:4200
 
       # 6. Java environment setup for Maven tests

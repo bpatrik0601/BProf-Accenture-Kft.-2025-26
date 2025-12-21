@@ -149,9 +149,11 @@
                 </configuration>
             </plugin>
 
-            <!-- Imposort plugins for actual import optimization (sorting, cleaning) -->
+            <!-- Imposort plugin for actual import optimization (sorting, cleaning) -->
+            
+            <!--
             <plugin>
-                <!-- Siom79 imposort: checks only, throws error if importing order is wrong -->
+                <!- Siom79 imposort: checks only, throws error if importing order is wrong (unused due to any of its version not being available in Maven Central) ->
                 <groupId>com.github.siom79.imposort</groupId>
                 <artifactId>imposort-maven-plugin</artifactId>
                 <version>1.14.0</version>
@@ -165,6 +167,7 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
 
             <plugin>
                 <!-- Revelc impsort: actually sorting imports, can be running manually or in CI/CD -->
