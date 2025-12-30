@@ -1,4 +1,3 @@
-
 name: UI Test Pipeline
 
 on:
@@ -6,31 +5,37 @@ on:
     branches: [ feature/add-ci-pipeline ]
   pull_request:
     branches: [ develop, main ]
-  workflow_dispatch: # Manual trigger with "Run workflow" button for testing and debugging purposes
+  workflow_dispatch: # Allows manual triggering for debugging or ad-hoc runs (via GitHub UI -> Actions tab -> "Run workflow" button)
 
 jobs:
   ui-tests:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout Maven (Playwright Java) repo
+      # ---------------------------------------------------------
+      # 1. Checkout the Maven (Playwright Java) repository
+      # ---------------------------------------------------------
       - name: Checkout Maven Playwright repo
         uses: actions/checkout@v4
 
-      # 2. Checkout Angular repo into a subfolder
+      # ---------------------------------------------------------
+      # 2. Checkout the Angular frontend into a subfolder
+      # ---------------------------------------------------------
       - name: Checkout Angular repo
         uses: actions/checkout@v4
         with:
           repository: bpatrik0601/BProf-Accenture-Kft.-2025-26--Angular-frontend
           path: angular-frontend
-          token: ${{ secrets.ANGULAR_REPO_TOKEN }} # Personal Access Token with the other private repo access
+          token: ${{ secrets.ANGULAR_REPO_TOKEN }} # Access to private repo
 
-      # 3. Node.js environment setup for Angular server + cache (for faster build/npm installs)
+      # ---------------------------------------------------------
+      # 3. Node.js setup + caching for faster Angular builds
+      # ---------------------------------------------------------
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # /'20.19.0' (> strategy.matrix.node-version can be used for multiple versions testing)
-      
+          node-version: '20'
+
       - name: Cache Node.js modules
         uses: actions/cache@v3
         with:
@@ -42,22 +47,27 @@ jobs:
       - name: Install Angular dependencies
         run: npm install --prefix angular-frontend
 
-      # 4. (Check Playwright version) Install Playwright Linux system deps via Node (no pom.xml changes needed)
-      - name: Check Playwright version
-        run: npx playwright --version
-        working-directory: ./  # or ./angular-frontend if preferred
-      
-      - name: Install Playwright deps (Linux)
-        run: npx playwright install-deps
-        working-directory: ./  # or ./angular-frontend if preferred
+      # ---------------------------------------------------------
+      # 4. Build the Angular application
+      ## In CI, 'ng serve' is not reliable and may fail to serve assets/mock JSON files. 
+      ## A production build is deterministic, stable, and always includes the mock data.
+      # ---------------------------------------------------------
+      - name: Build Angular
+        run: npm run build --prefix angular-frontend
 
-      # 5. Angular server start in background
-      - name: Start Angular server # alternative: use static 'npx http-server' to serve the built Angular app from 'dist' folder
-        run: | # ng serve is a dev server, not for production use as it keeps the process running and blocks the the pipeline and the workflow
-          npm start --prefix angular-frontend & 
+      # ---------------------------------------------------------
+      # 5. Serve the built Angular app statically
+      ## This guarantees that assets/mock/... JSON files are always available for Playwright tests. 
+      ## Using a static server is significantly more stable and CI-friendly than 'ng serve'.
+      # ---------------------------------------------------------
+      - name: Serve Angular dist
+        run: |
+          npx http-server angular-frontend/dist/football-dashboard -p 4200 &
           npx wait-on http://localhost:4200
 
-      # 6. Java environment setup for Maven tests
+      # ---------------------------------------------------------
+      # 6. Java setup for Maven + Playwright tests
+      # ---------------------------------------------------------
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -65,17 +75,25 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
+      # ---------------------------------------------------------
+      # 7. Run Playwright UI tests via Maven.
+      # The tests now target the statically served Angular build
+      # at http://localhost:4200, ensuring consistent DOM rendering
+      # and reliable mock data loading.
+      # ---------------------------------------------------------
       - name: Run Maven tests
-        run: xvfb-run mvn test # xvfb-run -> virtual framebuffer; harmless in headless mode (not obligatory as headless=true is set in Hooks; needed if headless=false is used)
+        run: xvfb-run mvn test
         working-directory: ./demo
 
-      # 7. Report artifacts upload
-      - name: Upload JUnit test results # JUnit XML reports artifact upload embedded if any JUnit test are executed
+      # ---------------------------------------------------------
+      # 8. Upload test reports (JUnit + Cucumber)
+      # ---------------------------------------------------------
+      - name: Upload JUnit test results
         uses: actions/upload-artifact@v4
         with:
           name: junit-test-results
           path: demo/target/surefire-reports/*.xml
-      
+
       - name: Upload Cucumber report
         uses: actions/upload-artifact@v4
         with:
@@ -88,14 +106,24 @@ jobs:
           name: cucumber-report-json
           path: demo/target/cucumber-report.json
 
+
+  # =====================================================================
+  # SECOND JOB: Static analysis (Java + Angular)
+  # =====================================================================
   static-analysis:
-    needs: ui-tests # depends on the ui-tests job
+    needs: ui-tests # Only run if UI tests succeed
     runs-on: ubuntu-latest
 
     steps:
+      # ---------------------------------------------------------
+      # 1. Checkout Maven repo for static analysis
+      # ---------------------------------------------------------
       - name: Checkout Maven repo
         uses: actions/checkout@v4
 
+      # ---------------------------------------------------------
+      # 2. Java setup for Checkstyle, SpotBugs, etc.
+      # ---------------------------------------------------------
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -103,7 +131,9 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      # Static analysis (Java)
+      # ---------------------------------------------------------
+      # 3. Run static analysis (Checkstyle, SpotBugs)
+      # ---------------------------------------------------------
       - name: Run static analysis (Java)
         run: mvn verify
         working-directory: ./demo
@@ -120,12 +150,16 @@ jobs:
           name: spotbugs-report
           path: demo/target/spotbugs-result.xml
 
-      # Imports optimalization
+      # ---------------------------------------------------------
+      # 4. Optimize imports (Revelc impsort plugin)
+      # ---------------------------------------------------------
       - name: Optimize imports
         run: mvn impsort:sort
         working-directory: ./demo
 
-      # Angular lint (Checkstyle equivalent for Angular/TypeScript -> checking the source code for Programmatic as well as Stylistic issues/errors)
+      # ---------------------------------------------------------
+      # 5. Angular linting (ESLint)
+      # ---------------------------------------------------------
       - name: Checkout Angular repo
         uses: actions/checkout@v4
         with:
@@ -137,7 +171,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
+
       - name: Cache Node.js modules
         uses: actions/cache@v3
         with:
@@ -151,10 +185,6 @@ jobs:
 
       - name: Run lint (Angular)
         run: npm run lint:ci --prefix angular-frontend -- --output-file=eslint-report.json --format=json
-
-      # Optional: list outputs to debug the path
-      - name: List lint outputs (debug)
-        run: ls -la angular-frontend
 
       - name: Upload ESLint report
         if: ${{ hashFiles('angular-frontend/eslint-report.json') != '' }}
