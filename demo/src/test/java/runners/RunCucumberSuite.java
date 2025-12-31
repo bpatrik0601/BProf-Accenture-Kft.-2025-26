@@ -37,6 +37,6 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
     // json: JSON report (computer processable riport for CI/CD integration)
 )
 
-public class RunCucumberTest {
+public class RunCucumberSuite {
     // This class is empty on purpose — it only triggers Cucumber's JUnit 5 runner.
 }

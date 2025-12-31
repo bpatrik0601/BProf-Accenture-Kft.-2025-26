@@ -9,10 +9,10 @@ import com.microsoft.playwright.Locator;
 public class MatchDetailsElements extends BasePage {
 
     // Selector constants – Separation for better maintainability
-    protected static final String LOADING_SELECTOR = "p:has-text('Loading match statistics')";
-    protected static final String TEAM_NAMES_SELECTOR = "h3";
-    protected static final String SCORE_SELECTOR = "p:has-text('Score')";
-    protected static final String STATISTICS_SELECTOR = "ul li";
+    private static final String LOADING_SELECTOR = "p:has-text('Loading match statistics')";
+    private static final String TEAM_NAMES_SELECTOR = "h3";
+    private static final String SCORE_SELECTOR = "p:has-text('Score')";
+    private static final String STATISTICS_SELECTOR = "ul li";
 
     // Elements
     protected final Locator loadingMessage;

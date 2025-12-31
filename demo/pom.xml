@@ -38,6 +38,7 @@
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite</artifactId>
             <version>1.10.0</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- JSON handling (Jackson databind + org.json) -->
@@ -79,7 +80,7 @@
                     <useModulePath>false</useModulePath>
                     <includes>
                         <!-- Cucumber runner + Gherkin tests only in CI (update: cucumber.features configuration to Surefire plugin) -->
-                        <include>**/RunCucumberTest.java</include>
+                        <include>**/RunCucumberSuite.java</include>
                     </includes>
                     <excludes>
                         <!-- JUnit tests excluded from CI-run -->
@@ -87,6 +88,103 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <!-- Checkstyle plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <!-- Local development: set build as failed -->
+                    <execution>
+                    <id>checkstyle-validate</id>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                    <configuration>
+                        <failsOnError>true</failsOnError>
+                    </configuration>
+                    </execution>
+
+                    <!-- CI/CD: generating report for artifact -->
+                    <execution>
+                    <id>checkstyle-report</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>checkstyle</goal>
+                    </goals>
+                    <configuration>
+                        <outputFile>target/checkstyle-result.xml</outputFile>
+                        <failsOnError>false</failsOnError>
+                    </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- SpotBugs plugin for bug-analysis -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.8.3.0</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>spotbugs</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failOnError>false</failOnError> <!-- useful for CI/CD pipelines -->
+                    <xmlOutput>true</xmlOutput>
+                    <xmlOutputDirectory>${project.build.directory}</xmlOutputDirectory> <!-- target directory as standard Maven property -->
+                    <outputFile>spotbugs-result.xml</outputFile>
+                </configuration>
+            </plugin>
+
+            <!-- Imposort plugin for actual import optimization (sorting, cleaning) -->
+            
+            <!--
+            <plugin>
+                <!- Siom79 imposort: checks only, throws error if importing order is wrong (unused due to any of its version not being available in Maven Central) ->
+                <groupId>com.github.siom79.imposort</groupId>
+                <artifactId>imposort-maven-plugin</artifactId>
+                <version>1.14.0</version>
+                <executions>
+                    <execution>
+                    <id>imposort-check</id>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            -->
+
+            <plugin>
+                <!-- Revelc impsort: actually sorting imports, can be running manually or in CI/CD -->
+                <groupId>net.revelc.code</groupId>
+                <artifactId>impsort-maven-plugin</artifactId>
+                <version>1.9.0</version>
+                <executions>
+                    <execution>
+                    <id>impsort-sort</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>sort</goal>
+                    </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>

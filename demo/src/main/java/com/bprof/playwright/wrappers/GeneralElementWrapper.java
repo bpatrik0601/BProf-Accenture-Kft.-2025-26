@@ -1,3 +1,9 @@
+/**
+ * Optional wrapper around Playwright's Locator.
+ * Demonstrates how a custom element abstraction layer could be built.
+ * Currently not used in the project, but kept for future extensibility.
+*/
+
 package com.bprof.playwright.wrappers;
 
 import com.microsoft.playwright.Locator;
