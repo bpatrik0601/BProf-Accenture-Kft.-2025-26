@@ -26,8 +26,8 @@ public class UiTestFlowDashboardSteps {
     @Given("I open the match dashboard")
     public void openDashboard() {
         page = Hooks.getPage();
-        page.navigate("http://localhost:4200/");
         dashboard = new MatchDashboardPage(page);
+        dashboard.open();
     }
 
     @When("the matches are loaded")

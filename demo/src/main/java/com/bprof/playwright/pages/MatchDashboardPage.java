@@ -32,8 +32,20 @@ public class MatchDashboardPage extends MatchDashboardElements {
     
     // Actions --> utility methods
 
+    public void waitForDashboardReady() {
+        statusMessage.waitFor(); // wait until status message is present
+        leagueHeaders.first().waitFor(); // wait until at least one league header is present
+    }
+
+    public void open() {
+        page.navigate("http://localhost:4200/");
+        waitForDashboardReady();
+    }
+
     public void waitForMatches() {
-    page.waitForSelector(".match-card"); // wait until at least one match card is present
+        matchCards.first().waitFor(
+            new Locator.WaitForOptions().setTimeout(60000)
+        ); // wait until at least one match card is present
     }
 
     public String getFirstMatchCardText() {

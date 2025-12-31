@@ -1,6 +1,7 @@
 package com.bprof.playwright.base;
 
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.WaitUntilState;
 
 public abstract class BasePage {
     protected final Page page;
@@ -19,6 +20,10 @@ public abstract class BasePage {
     }
 
     public void navigate(String url) {
-        page.navigate(url);
+        page.navigate(
+            url,
+            new Page.NavigateOptions()
+                .setWaitUntil(WaitUntilState.NETWORKIDLE)
+        );
     }
 }

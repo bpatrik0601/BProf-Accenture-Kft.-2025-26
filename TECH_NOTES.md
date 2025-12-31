@@ -6,7 +6,7 @@
 ### Summary
 New sections of additional technical explanations, design decisions, and background notes can be added here as the project grows and evolves.
 
-# Context
+# Context: CSS <--> XPath
 
 The following explanation originally appeared as an inline comment inside the `MatchDashboardPage` class.:
 ```java
@@ -50,6 +50,8 @@ This section preserves and summarizes the reasoning behind the decision, provide
 
 When working with Playwright (and also Selenium), it is important to understand the difference between CSS selectors and XPath, especially when dealing with Angular routerLinks or deeply nested elements.
 
+This project intentionally prefers CSS selectors over XPath for most element interactions in order to maximize performance, readability, and long-term maintainability.
+
 ### CSS Selectors (non-recursive)
 - Fastest option (browser-native)
 - Clean, short, easy to maintain
@@ -83,3 +85,21 @@ Example:
 
 CSS selectors are preferred in this project because they are faster, cleaner, and more stable.
 XPath remains available for edge cases but is not needed for typical routerLink interactions.
+
+
+
+# Context: CI-Optimization
+
+In CI environment, Angular's asynchronous data loading is slower, so the Playwright tests initially did not wait deterministically for the DOM to render.
+
+It has been fixed with navigation and a more stable wait strategy (`networkidle`):
+>Instead of waiting for the final UI elements, the tests first synchronize on semantic and test-specific DOM markers (`data-testid`).
+>Synchronization is implemented using Playwright Locator.waitFor() calls instead of raw selector waits.
+
+These changes were made to be ensuring deterministic execution and improved stability in CI/CD environments.
+
+### Design Decision
+
+In CI environments, synchronization is performed using semantic and test-specific DOM markers (`data-testid`) combined with Playwright `Locator.waitFor()` calls.
+
+This approach avoids flaky timing issues caused by asynchronous Angular rendering and ensures deterministic execution in headless CI/CD pipelines.
