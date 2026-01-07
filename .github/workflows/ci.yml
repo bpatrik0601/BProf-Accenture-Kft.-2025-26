@@ -64,6 +64,10 @@ jobs:
         run: |
           npx http-server angular-frontend/dist/football-dashboard -p 4200 &
           npx wait-on http://localhost:4200
+      
+      - name: Debug dist folder
+        run: |
+          ls -R angular-frontend/dist/football-dashboard
 
       # ---------------------------------------------------------
       # 6. Java setup for Maven + Playwright tests
