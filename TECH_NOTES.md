@@ -96,6 +96,21 @@ It has been fixed with navigation and a more stable wait strategy (`networkidle`
 >Instead of waiting for the final UI elements, the tests first synchronize on semantic and test-specific DOM markers (`data-testid`).
 >Synchronization is implemented using Playwright Locator.waitFor() calls instead of raw selector waits.
 
+## Further addition
+In the CI pipeline, Playwright tests initially timed out.
+The reason for the error was that the Angular application was built with the new @angular/build:application builder, without an explicit outputPath.
+As a result, the static server served the wrong build directory and did not handle client-side routing.
+The problem was solved by explicitly specifying the outputPath and using the SPA fallback mode of the http-server.
+
+The tests were initially based on implicit timing.
+After refactoring the Page Object Model, deterministic waiting was introduced, so explicit synchronization of transient UI states became necessary.
+
+Playwright's Java assertion API is used because it provides implicit waiting on the appearance and state of the element, thus avoiding timing errors.
+
+(Transient UI states (such as short-lived loading messages) are documented for demonstration purposes,
+but the test suite primarily validates stable, end-user-visible states to ensure deterministic execution.)
+
+
 These changes were made to be ensuring deterministic execution and improved stability in CI/CD environments.
 
 ### Design Decision

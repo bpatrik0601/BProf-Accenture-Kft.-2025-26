@@ -7,9 +7,9 @@ Feature: Matches' Dashboard TestFlow
 
   Scenario: Status message changes after matches load
     Given I open the match dashboard
-    Then I should see the status message "Loading matches..."
+    Then the loading state should be visible
     When the matches are loaded
-    Then I should see the status message "Matches loaded"
+    Then the loaded state should be visible
 
   Scenario: League headers are displayed
     Given I open the match dashboard

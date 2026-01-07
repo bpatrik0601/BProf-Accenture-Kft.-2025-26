@@ -5,6 +5,7 @@ import java.util.List;
 import com.bprof.playwright.elements.MatchDashboardElements;
 
 import com.microsoft.playwright.*; // import Page; Locator.
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class MatchDashboardPage extends MatchDashboardElements {
 
@@ -40,6 +41,18 @@ public class MatchDashboardPage extends MatchDashboardElements {
     public void open() {
         page.navigate("http://localhost:4200/");
         waitForDashboardReady();
+    }
+
+    public void waitForStatusMessage(String expectedText) {
+        assertThat(statusMessage).hasText(expectedText); // filter/FilterOptions()
+    }
+    
+    public void waitForLoadingState() {
+        assertThat(statusMessage).hasText("Loading matches...");
+    }
+
+    public void waitForLoadedState() {
+        assertThat(statusMessage).hasText("Matches loaded");
     }
 
     public void waitForMatches() {

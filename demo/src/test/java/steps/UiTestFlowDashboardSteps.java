@@ -30,14 +30,19 @@ public class UiTestFlowDashboardSteps {
         dashboard.open();
     }
 
+    @Then("the loading state should be visible")
+    public void loadingState() {
+        dashboard.waitForLoadingState();
+    }
+
     @When("the matches are loaded")
     public void waitForMatches() {
         dashboard.waitForMatches();
     }
 
-    @Then("I should see the status message {string}")
-    public void checkStatusMessage(String expected) {
-        Assertions.assertEquals(expected, dashboard.getStatusMessageText());
+    @Then("the loaded state should be visible")
+    public void loadedState() {
+        dashboard.waitForLoadedState();
     }
 
     @Then("I should see the following league headers:")
