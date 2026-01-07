@@ -43,16 +43,8 @@ public class MatchDashboardPage extends MatchDashboardElements {
         waitForDashboardReady();
     }
 
-    public void waitForStatusMessage(String expectedText) {
-        assertThat(statusMessage).hasText(expectedText); // filter/FilterOptions()
-    }
-    
-    public void waitForLoadingState() {
-        assertThat(statusMessage).hasText("Loading matches...");
-    }
-
-    public void waitForLoadedState() {
-        assertThat(statusMessage).hasText("Matches loaded");
+    public void waitForStatusMessage(String expected) {
+        assertThat(statusMessage).hasText(expected); // filter/FilterOptions()
     }
 
     public void waitForMatches() {

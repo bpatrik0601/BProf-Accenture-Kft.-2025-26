@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="runners.RunCucumberSuite" time="128.953" tests="20" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="runners.RunCucumberSuite" time="189.184" tests="20" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\patrik.balazs\AppData\Local\Temp\surefire800242000044551189\surefirebooter-20260107142142145_3.jar C:\Users\patrik.balazs\AppData\Local\Temp\surefire800242000044551189 2026-01-07T14-21-41_970-jvmRun1 surefire-20260107142142145_1tmp surefire_0-20260107142142145_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\patrik.balazs\AppData\Local\Temp\surefire4610748838587016766\surefirebooter-20260107172349017_3.jar C:\Users\patrik.balazs\AppData\Local\Temp\surefire4610748838587016766 2026-01-07T17-23-48_738-jvmRun1 surefire-20260107172349017_1tmp surefire_0-20260107172349017_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\target\test-classes;C:\Users\patrik.balazs\Projects\University_projects\BProf-Accenture-Kft.-2025-26\BProf-Accenture-Kft.-2025-26\demo\target\classes;C:\Users\patrik.balazs\.m2\repository\com\microsoft\playwright\playwright\1.48.0\playwright-1.48.0.jar;C:\Users\patrik.balazs\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\patrik.balazs\.m2\repository\com\google\errorprone\error_prone_annotations\2.27.0\error_prone_annotations-2.27.0.jar;C:\Users\patrik.balazs\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\patrik.balazs\.m2\repository\com\microsoft\playwright\driver\1.48.0\driver-1.48.0.jar;C:\Users\patrik.balazs\.m2\repository\com\microsoft\playwright\driver-bundle\1.48.0\driver-bundle-1.48.0.jar;C:\Users\patrik.balazs\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\patrik.balazs\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\patrik.balazs\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\patrik.balazs\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.0\junit-jupiter-engine-5.11.0.jar;C:\Users\patrik.balazs\.m2\repository\org\junit\platform\junit-platform-engine\1.11.0\junit-platform-engine-1.11.0.jar;C:\Users\patrik.balazs\.m2\repository\org\junit\platform\junit-platform-suite\1.10.0\junit-platform-suite-1.10.0.jar;C:\Users\patrik.balazs\.m2\repository\org\junit\platform\junit-platform-suite-api\1.10.0\junit-platform-suite-api-1.10.0.jar;C:\Users\patrik.balazs\.m2\repository\org\junit\platform\junit-platform-suite-engine\1.10.0\junit-platform-suite-engine-1.10.0.jar;C:\Users\patrik.balazs\.m2\repository\org\junit\platform\junit-platform-suite-commons\1.10.0\junit-platform-suite-commons-1.10.0.jar;C:\Users\patrik.balazs\.m2\repository\org\junit\platform\junit-platform-launcher\1.10.0\junit-platform-launcher-1.10.0.jar;C:\Users\patrik.balazs\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;C:\Users\patrik.balazs\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\patrik.balazs\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar;C:\Users\patrik.balazs\.m2\repository\org\json\json\20230227\json-20230227.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\cucumber-java\7.18.0\cucumber-java-7.18.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\cucumber-core\7.18.0\cucumber-core-7.18.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\cucumber-gherkin\7.18.0\cucumber-gherkin-7.18.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\cucumber-gherkin-messages\7.18.0\cucumber-gherkin-messages-7.18.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\gherkin\28.0.0\gherkin-28.0.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\messages\24.1.0\messages-24.1.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\testng-xml-formatter\0.1.0\testng-xml-formatter-0.1.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\query\12.2.0\query-12.2.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\tag-expressions\6.1.0\tag-expressions-6.1.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\cucumber-expressions\17.1.0\cucumber-expressions-17.1.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\datatable\7.18.0\datatable-7.18.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\cucumber-plugin\7.18.0\cucumber-plugin-7.18.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\docstring\7.18.0\docstring-7.18.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\html-formatter\21.3.1\html-formatter-21.3.1.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\junit-xml-formatter\0.4.0\junit-xml-formatter-0.4.0.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\ci-environment\10.0.1\ci-environment-10.0.1.jar;C:\Users\patrik.balazs\.m2\repository\io\cucumber\cucumber-junit-platform-engine\7.18.0\cucumber-junit-platform-engine-7.18.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\patrik.balazs\AppData\Local\Temp\surefire800242000044551189\surefirebooter-20260107142142145_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\patrik.balazs\AppData\Local\Temp\surefire4610748838587016766\surefirebooter-20260107172349017_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.8+12-LTS-250"/>
@@ -58,7 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="Validate matches.json returns correct status and body" classname="API Testing with Playwright" time="27.156">
+  <testcase name="Validate matches.json returns correct status and body" classname="API Testing with Playwright" time="42.257">
     <system-out><![CDATA[
 Scenario: Validate matches.json returns correct status and body                 &amp#27;[90m# features/api.feature:8&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe API client is initialized&amp#27;[0m                                           &amp#27;[90m# steps.ApiSteps.initApiClient()&amp#27;[0m
@@ -67,7 +67,7 @@ Scenario: Validate matches.json returns correct status and body                 
   &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe response body should contain &amp#27;[0m&amp#27;[32m&amp#27;[1m"events"&amp#27;[0m                                 &amp#27;[90m# steps.ApiSteps.checkBodyContains(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Validate match-statistics.json returns correct status and body" classname="API Testing with Playwright" time="5.194">
+  <testcase name="Validate match-statistics.json returns correct status and body" classname="API Testing with Playwright" time="8.997">
     <system-out><![CDATA[
 Scenario: Validate match-statistics.json returns correct status and body                 &amp#27;[90m# features/api.feature:14&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe API client is initialized&amp#27;[0m                                                    &amp#27;[90m# steps.ApiSteps.initApiClient()&amp#27;[0m
@@ -76,7 +76,7 @@ Scenario: Validate match-statistics.json returns correct status and body        
   &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe response body should contain &amp#27;[0m&amp#27;[32m&amp#27;[1m"1092"&amp#27;[0m                                            &amp#27;[90m# steps.ApiSteps.checkBodyContains(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Load and display match data between famous teams (from static JSON)" classname="Matches display" time="3.598">
+  <testcase name="Load and display match data between famous teams (from static JSON)" classname="Matches display" time="5.965">
     <system-out><![CDATA[
 Scenario: Load and display match data between famous teams (from static JSON) &amp#27;[90m# features/datahandling.feature:6&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe match data exists&amp#27;[0m                                                 &amp#27;[90m# steps.StaticDataHandlingSteps.matchDataExists()&amp#27;[0m
@@ -92,7 +92,7 @@ Teams: Liverpool vs Chelsea
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe home and away teams should be shown&amp#27;[0m                                &amp#27;[90m# steps.StaticDataHandlingSteps.verifyTeamsDisplayed()&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Invalid JSON data triggers an error message" classname="Error handling" time="3.435">
+  <testcase name="Invalid JSON data triggers an error message" classname="Error handling" time="6.058">
     <system-out><![CDATA[
 Scenario: Invalid JSON data triggers an error message           &amp#27;[90m# features/error.feature:6&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe invalid match data exists&amp#27;[0m                           &amp#27;[90m# steps.ErrorSteps.invalidMatchDataExists()&amp#27;[0m
@@ -101,7 +101,7 @@ Error caught successfully: Invalid id: must between 1 and 100000
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32man error message should appear&amp#27;[0m                           &amp#27;[90m# steps.ErrorSteps.errorShouldAppear()&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Load and display match statistics" classname="Statistics display" time="4.173">
+  <testcase name="Load and display match statistics" classname="Statistics display" time="6.593">
     <system-out><![CDATA[
 Scenario: Load and display match statistics                         &amp#27;[90m# features/statistics.feature:6&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe statistics data exists&amp#27;[0m                                  &amp#27;[90m# steps.StatisticsSteps.statisticsDataExists()&amp#27;[0m
@@ -114,88 +114,17 @@ Fouls: 12 - 12
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe statistics should be shown on screen&amp#27;[0m                     &amp#27;[90m# steps.StatisticsSteps.showStatistics()&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Status message changes after matches load" classname="Matches&apos; Dashboard TestFlow" time="11.726">
-    <failure message="Locator expected to have text: Loading matches...&#10;Received: Matches loaded&#10;&#10;Call log:&#10;Locator.expect with timeout 5000ms&#10;waiting for locator(&quot;[data-testid=&apos;status-message&apos;]&quot;)&#10;  locator resolved to &lt;p _ngcontent-ng-c2119039520=&quot;&quot; data-testid=&quot;status-message&quot;&gt;Matches loaded&lt;/p&gt;&#10;  unexpected value &quot;Matches loaded&quot;&#10;  locator resolved to &lt;p _ngcontent-ng-c2119039520=&quot;&quot; data-testid=&quot;status-message&quot;&gt;Matches loaded&lt;/p&gt;&#10;  unexpected value &quot;Matches loaded&quot;&#10;  locator resolved to &lt;p _ngcontent-ng-c2119039520=&quot;&quot; data-testid=&quot;status-message&quot;&gt;Matches loaded&lt;/p&gt;&#10;  unexpected value &quot;Matches loaded&quot;&#10;  locator resolved to &lt;p _ngcontent-ng-c2119039520=&quot;&quot; data-testid=&quot;status-message&quot;&gt;Matches loaded&lt;/p&gt;&#10;  unexpected value &quot;Matches loaded&quot;&#10;  locator resolved to &lt;p _ngcontent-ng-c2119039520=&quot;&quot; data-testid=&quot;status-message&quot;&gt;Matches loaded&lt;/p&gt;&#10;  unexpected value &quot;Matches loaded&quot;&#10;  locator resolved to &lt;p _ngcontent-ng-c2119039520=&quot;&quot; data-testid=&quot;status-message&quot;&gt;Matches loaded&lt;/p&gt;&#10;  unexpected value &quot;Matches loaded&quot;&#10;  locator resolved to &lt;p _ngcontent-ng-c2119039520=&quot;&quot; data-testid=&quot;status-message&quot;&gt;Matches loaded&lt;/p&gt;&#10;  unexpected value &quot;Matches loaded&quot;&#10;  locator resolved to &lt;p _ngcontent-ng-c2119039520=&quot;&quot; data-testid=&quot;status-message&quot;&gt;Matches loaded&lt;/p&gt;&#10;  unexpected value &quot;Matches loaded&quot;&#10;  locator resolved to &lt;p _ngcontent-ng-c2119039520=&quot;&quot; data-testid=&quot;status-message&quot;&gt;Matches loaded&lt;/p&gt;&#10;  unexpected value &quot;Matches loaded&quot;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
-Locator expected to have text: Loading matches...
-Received: Matches loaded
-
-Call log:
-Locator.expect with timeout 5000ms
-waiting for locator("[data-testid='status-message']")
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-	at com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:74)
-	at com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:51)
-	at com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:42)
-	at com.microsoft.playwright.impl.LocatorAssertionsImpl.hasText(LocatorAssertionsImpl.java:254)
-	at com.microsoft.playwright.assertions.LocatorAssertions.hasText(LocatorAssertions.java:1727)
-	at com.bprof.playwright.pages.MatchDashboardPage.waitForLoadingState(MatchDashboardPage.java:51)
-	at steps.UiTestFlowDashboardSteps.loadingState(UiTestFlowDashboardSteps.java:35)
-	at ✽.the loading state should be visible(classpath:features/ui_testflow_dashboard.feature:10)
-]]></failure>
+  <testcase name="Status message changes after matches load" classname="Matches&apos; Dashboard TestFlow" time="10.075">
     <system-out><![CDATA[
-Scenario: Status message changes after matches load &amp#27;[90m# features/ui_testflow_dashboard.feature:8&amp#27;[0m
-  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match dashboard&amp#27;[0m                  &amp#27;[90m# steps.UiTestFlowDashboardSteps.openDashboard()&amp#27;[0m
-  &amp#27;[31mThen &amp#27;[0m&amp#27;[31mthe loading state should be visible&amp#27;[0m          &amp#27;[90m# steps.UiTestFlowDashboardSteps.loadingState()&amp#27;[0m
-      &amp#27;[31morg.opentest4j.AssertionFailedError: Locator expected to have text: Loading matches...
-Received: Matches loaded
-
-Call log:
-Locator.expect with timeout 5000ms
-waiting for locator("[data-testid='status-message']")
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-  locator resolved to <p _ngcontent-ng-c2119039520="" data-testid="status-message">Matches loaded</p>
-  unexpected value "Matches loaded"
-	at com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:74)
-	at com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:51)
-	at com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:42)
-	at com.microsoft.playwright.impl.LocatorAssertionsImpl.hasText(LocatorAssertionsImpl.java:254)
-	at com.microsoft.playwright.assertions.LocatorAssertions.hasText(LocatorAssertions.java:1727)
-	at com.bprof.playwright.pages.MatchDashboardPage.waitForLoadingState(MatchDashboardPage.java:51)
-	at steps.UiTestFlowDashboardSteps.loadingState(UiTestFlowDashboardSteps.java:35)
-	at ✽.the loading state should be visible(classpath:features/ui_testflow_dashboard.feature:10)
-&amp#27;[0m
-  &amp#27;[36mWhen &amp#27;[0m&amp#27;[36mthe matches are loaded&amp#27;[0m                       &amp#27;[90m# steps.UiTestFlowDashboardSteps.waitForMatches()&amp#27;[0m
-  &amp#27;[36mThen &amp#27;[0m&amp#27;[36mthe loaded state should be visible&amp#27;[0m           &amp#27;[90m# steps.UiTestFlowDashboardSteps.loadedState()&amp#27;[0m
-
-    Embedding Error Screenshot [image/png 49611 bytes]
-
+Scenario: Status message changes after matches load     &amp#27;[90m# features/ui_testflow_dashboard.feature:8&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match dashboard&amp#27;[0m                      &amp#27;[90m# steps.UiTestFlowDashboardSteps.openDashboard()&amp#27;[0m
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mthe matches are loaded&amp#27;[0m                           &amp#27;[90m# steps.UiTestFlowDashboardSteps.waitForMatches()&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see the status message &amp#27;[0m&amp#27;[32m&amp#27;[1m"Matches loaded"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowDashboardSteps.loadingState(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="League headers are displayed" classname="Matches&apos; Dashboard TestFlow" time="6.364">
+  <testcase name="League headers are displayed" classname="Matches&apos; Dashboard TestFlow" time="9.309">
     <system-out><![CDATA[
-Scenario: League headers are displayed            &amp#27;[90m# features/ui_testflow_dashboard.feature:14&amp#27;[0m
+Scenario: League headers are displayed            &amp#27;[90m# features/ui_testflow_dashboard.feature:13&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match dashboard&amp#27;[0m                &amp#27;[90m# steps.UiTestFlowDashboardSteps.openDashboard()&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mthe matches are loaded&amp#27;[0m                     &amp#27;[90m# steps.UiTestFlowDashboardSteps.waitForMatches()&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see the following league headers:&amp#27;[0m &amp#27;[90m# steps.UiTestFlowDashboardSteps.checkLeagueHeaders(io.cucumber.datatable.DataTable)&amp#27;[0m
@@ -205,33 +134,33 @@ Scenario: League headers are displayed            &amp#27;[90m# features/ui_test
   &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should not see &amp#27;[0m&amp#27;[32m&amp#27;[1m"Ligue 1"&amp#27;[0m                  &amp#27;[90m# steps.UiTestFlowDashboardSteps.notToBeSeen(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Match count greater than zero" classname="Matches&apos; Dashboard TestFlow" time="7.006">
+  <testcase name="Match count greater than zero" classname="Matches&apos; Dashboard TestFlow" time="9.655">
     <system-out><![CDATA[
-Scenario: Match count greater than zero         &amp#27;[90m# features/ui_testflow_dashboard.feature:23&amp#27;[0m
+Scenario: Match count greater than zero         &amp#27;[90m# features/ui_testflow_dashboard.feature:22&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match dashboard&amp#27;[0m              &amp#27;[90m# steps.UiTestFlowDashboardSteps.openDashboard()&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mthe matches are loaded&amp#27;[0m                   &amp#27;[90m# steps.UiTestFlowDashboardSteps.waitForMatches()&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe match count should be greater than &amp#27;[0m&amp#27;[32m&amp#27;[1m0&amp#27;[0m &amp#27;[90m# steps.UiTestFlowDashboardSteps.checkMatchCountGreater(int)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Match count matches JSON data" classname="Matches&apos; Dashboard TestFlow" time="6.636">
+  <testcase name="Match count matches JSON data" classname="Matches&apos; Dashboard TestFlow" time="8.983">
     <system-out><![CDATA[
-Scenario: Match count matches JSON data &amp#27;[90m# features/ui_testflow_dashboard.feature:28&amp#27;[0m
+Scenario: Match count matches JSON data &amp#27;[90m# features/ui_testflow_dashboard.feature:27&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match dashboard&amp#27;[0m      &amp#27;[90m# steps.UiTestFlowDashboardSteps.openDashboard()&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mthe matches are loaded&amp#27;[0m           &amp#27;[90m# steps.UiTestFlowDashboardSteps.waitForMatches()&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe match count should be &amp#27;[0m&amp#27;[32m&amp#27;[1m8&amp#27;[0m      &amp#27;[90m# steps.UiTestFlowDashboardSteps.checkMatchCount(int)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Match count grouped by league" classname="Matches&apos; Dashboard TestFlow" time="6.78">
+  <testcase name="Match count grouped by league" classname="Matches&apos; Dashboard TestFlow" time="9.8">
     <system-out><![CDATA[
-Scenario: Match count grouped by league &amp#27;[90m# features/ui_testflow_dashboard.feature:33&amp#27;[0m
+Scenario: Match count grouped by league &amp#27;[90m# features/ui_testflow_dashboard.feature:32&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match dashboard&amp#27;[0m      &amp#27;[90m# steps.UiTestFlowDashboardSteps.openDashboard()&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mthe matches are loaded&amp#27;[0m           &amp#27;[90m# steps.UiTestFlowDashboardSteps.waitForMatches()&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mLa Liga should have &amp#27;[0m&amp#27;[32m&amp#27;[1m3&amp#27;[0m&amp#27;[32m matches&amp#27;[0m    &amp#27;[90m# steps.UiTestFlowDashboardSteps.laLigaShouldHaveMatches(int)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Match card content" classname="Matches&apos; Dashboard TestFlow" time="6.501">
+  <testcase name="Match card content" classname="Matches&apos; Dashboard TestFlow" time="8.952">
     <system-out><![CDATA[
-Scenario: Match card content                &amp#27;[90m# features/ui_testflow_dashboard.feature:38&amp#27;[0m
+Scenario: Match card content                &amp#27;[90m# features/ui_testflow_dashboard.feature:37&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match dashboard&amp#27;[0m          &amp#27;[90m# steps.UiTestFlowDashboardSteps.openDashboard()&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mthe matches are loaded&amp#27;[0m               &amp#27;[90m# steps.UiTestFlowDashboardSteps.waitForMatches()&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe first match card should contain:&amp#27;[0m &amp#27;[90m# steps.UiTestFlowDashboardSteps.theFirstMatchCardShouldContain(io.cucumber.datatable.DataTable)&amp#27;[0m
@@ -240,15 +169,15 @@ Scenario: Match card content                &amp#27;[90m# features/ui_testflow_d
     | 4 - 0             |
 ]]></system-out>
   </testcase>
-  <testcase name="Click match navigates to details" classname="Matches&apos; Dashboard TestFlow" time="6.737">
+  <testcase name="Click match navigates to details" classname="Matches&apos; Dashboard TestFlow" time="9.451">
     <system-out><![CDATA[
-Scenario: Click match navigates to details    &amp#27;[90m# features/ui_testflow_dashboard.feature:46&amp#27;[0m
+Scenario: Click match navigates to details    &amp#27;[90m# features/ui_testflow_dashboard.feature:45&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match dashboard&amp#27;[0m            &amp#27;[90m# steps.UiTestFlowDashboardSteps.openDashboard()&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI click the match with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1001"&amp#27;[0m       &amp#27;[90m# steps.UiTestFlowDashboardSteps.clickMatchById(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should be navigated to &amp#27;[0m&amp#27;[32m&amp#27;[1m"/match/1001"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowDashboardSteps.checkNavigation(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Statistics visible after load" classname="Match Statistics&apos; Details TestFlow" time="4.219">
+  <testcase name="Statistics visible after load" classname="Match Statistics&apos; Details TestFlow" time="6.857">
     <system-out><![CDATA[
 Scenario: Statistics visible after load     &amp#27;[90m# features/ui_testflow_statistics.feature:8&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match details for &amp#27;[0m&amp#27;[32m&amp#27;[1m"1001"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowStatisticsSteps.openMatchDetails(java.lang.String)&amp#27;[0m
@@ -256,7 +185,7 @@ Scenario: Statistics visible after load     &amp#27;[90m# features/ui_testflow_s
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe team names should be visible&amp#27;[0m     &amp#27;[90m# steps.UiTestFlowStatisticsSteps.checkTeamNamesVisible()&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Team names and date displayed" classname="Match Statistics&apos; Details TestFlow" time="4.167">
+  <testcase name="Team names and date displayed" classname="Match Statistics&apos; Details TestFlow" time="6.146">
     <system-out><![CDATA[
 Scenario: Team names and date displayed     &amp#27;[90m# features/ui_testflow_statistics.feature:13&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match details for &amp#27;[0m&amp#27;[32m&amp#27;[1m"1001"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowStatisticsSteps.openMatchDetails(java.lang.String)&amp#27;[0m
@@ -265,7 +194,7 @@ Scenario: Team names and date displayed     &amp#27;[90m# features/ui_testflow_s
   &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe match date should be visible&amp#27;[0m      &amp#27;[90m# steps.UiTestFlowStatisticsSteps.checkMatchDateVisible()&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Score displayed correctly" classname="Match Statistics&apos; Details TestFlow" time="4.168">
+  <testcase name="Score displayed correctly" classname="Match Statistics&apos; Details TestFlow" time="6.33">
     <system-out><![CDATA[
 Scenario: Score displayed correctly         &amp#27;[90m# features/ui_testflow_statistics.feature:19&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match details for &amp#27;[0m&amp#27;[32m&amp#27;[1m"1001"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowStatisticsSteps.openMatchDetails(java.lang.String)&amp#27;[0m
@@ -273,7 +202,7 @@ Scenario: Score displayed correctly         &amp#27;[90m# features/ui_testflow_s
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe score should be &amp#27;[0m&amp#27;[32m&amp#27;[1m"Score: 3 - 1"&amp#27;[0m   &amp#27;[90m# steps.UiTestFlowStatisticsSteps.checkScore(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Goals statistic" classname="Match Statistics&apos; Details TestFlow" time="3.7">
+  <testcase name="Goals statistic" classname="Match Statistics&apos; Details TestFlow" time="6.512">
     <system-out><![CDATA[
 Scenario: Goals statistic                    &amp#27;[90m# features/ui_testflow_statistics.feature:24&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match details for &amp#27;[0m&amp#27;[32m&amp#27;[1m"1001"&amp#27;[0m  &amp#27;[90m# steps.UiTestFlowStatisticsSteps.openMatchDetails(java.lang.String)&amp#27;[0m
@@ -281,28 +210,28 @@ Scenario: Goals statistic                    &amp#27;[90m# features/ui_testflow_
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe goals statistic should be &amp#27;[0m&amp#27;[32m&amp#27;[1m"3 - 1"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowStatisticsSteps.checkGoals(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Shots on target statistic" classname="Match Statistics&apos; Details TestFlow" time="4.527">
+  <testcase name="Shots on target statistic" classname="Match Statistics&apos; Details TestFlow" time="6.788">
     <system-out><![CDATA[
 Scenario: Shots on target statistic                     &amp#27;[90m# features/ui_testflow_statistics.feature:29&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match details for &amp#27;[0m&amp#27;[32m&amp#27;[1m"1001"&amp#27;[0m             &amp#27;[90m# steps.UiTestFlowStatisticsSteps.openMatchDetails(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe shots on target statistic should be &amp#27;[0m&amp#27;[32m&amp#27;[1m"17 - 6"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowStatisticsSteps.checkShots(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Possession statistic" classname="Match Statistics&apos; Details TestFlow" time="3.861">
+  <testcase name="Possession statistic" classname="Match Statistics&apos; Details TestFlow" time="6.68">
     <system-out><![CDATA[
 Scenario: Possession statistic                        &amp#27;[90m# features/ui_testflow_statistics.feature:33&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match details for &amp#27;[0m&amp#27;[32m&amp#27;[1m"1001"&amp#27;[0m           &amp#27;[90m# steps.UiTestFlowStatisticsSteps.openMatchDetails(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe possession statistic should be &amp#27;[0m&amp#27;[32m&amp#27;[1m"68% - 32%"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowStatisticsSteps.checkPossession(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Fouls statistic" classname="Match Statistics&apos; Details TestFlow" time="4.135">
+  <testcase name="Fouls statistic" classname="Match Statistics&apos; Details TestFlow" time="7.003">
     <system-out><![CDATA[
 Scenario: Fouls statistic                     &amp#27;[90m# features/ui_testflow_statistics.feature:37&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match details for &amp#27;[0m&amp#27;[32m&amp#27;[1m"1001"&amp#27;[0m   &amp#27;[90m# steps.UiTestFlowStatisticsSteps.openMatchDetails(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe fouls statistic should be &amp#27;[0m&amp#27;[32m&amp#27;[1m"8 - 14"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowStatisticsSteps.checkFouls(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="All statistics listed" classname="Match Statistics&apos; Details TestFlow" time="4.432">
+  <testcase name="All statistics listed" classname="Match Statistics&apos; Details TestFlow" time="5.867">
     <system-out><![CDATA[
 Scenario: All statistics listed             &amp#27;[90m# features/ui_testflow_statistics.feature:41&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mI open the match details for &amp#27;[0m&amp#27;[32m&amp#27;[1m"1001"&amp#27;[0m &amp#27;[90m# steps.UiTestFlowStatisticsSteps.openMatchDetails(java.lang.String)&amp#27;[0m

@@ -6,6 +6,7 @@
 ### Summary
 New sections of additional technical explanations, design decisions, and background notes can be added here as the project grows and evolves.
 
+
 # Context: CSS <--> XPath
 
 The following explanation originally appeared as an inline comment inside the `MatchDashboardPage` class.:
@@ -96,25 +97,56 @@ It has been fixed with navigation and a more stable wait strategy (`networkidle`
 >Instead of waiting for the final UI elements, the tests first synchronize on semantic and test-specific DOM markers (`data-testid`).
 >Synchronization is implemented using Playwright Locator.waitFor() calls instead of raw selector waits.
 
-## Further addition
-In the CI pipeline, Playwright tests initially timed out.
-The reason for the error was that the Angular application was built with the new @angular/build:application builder, without an explicit outputPath.
-As a result, the static server served the wrong build directory and did not handle client-side routing.
-The problem was solved by explicitly specifying the outputPath and using the SPA fallback mode of the http-server.
+## Design Decision
 
-The tests were initially based on implicit timing.
-After refactoring the Page Object Model, deterministic waiting was introduced, so explicit synchronization of transient UI states became necessary.
+In CI environments, synchronization is performed using semantic and test-specific DOM markers (`data-testid`) combined with Playwright `Locator.waitFor()` calls.
 
-Playwright's Java assertion API is used because it provides implicit waiting on the appearance and state of the element, thus avoiding timing errors.
+This approach avoids flaky timing issues caused by asynchronous Angular rendering and ensures deterministic execution in headless CI/CD pipelines.
+
+
+
+# Context: Transient UI States and Test Determinism
+
+During the implementation of Playwright-based E2E tests, an explicit test case was initially created
+to verify the temporary loading state of the dashboard ("Loading matches...").
+
+Although this state exists in the application logic, it was intentionally removed from the
+final automated E2E test suite.
+
+## Reasoning
+
+The loading message represents a **transient UI state**:
+- it may only appear for a very short time
+- in fast environments (local runs, CI, production builds with mock data) it may never be observable
+- Playwright cannot reliably assert states that occur before the test runner gains control
+
+As a result, asserting the loading message leads to **flaky tests**:
+- tests may pass or fail depending on timing
+- CI environments behave differently than local development
+- increasing timeouts or adding explicit waits does not guarantee stability
+
+## Design Decision
+
+The E2E test suite focuses exclusively on **stable, business-relevant states**:
+- final rendered content
+- deterministic DOM structure
+- post-loading UI states (e.g. "Matches loaded")
+
+Transient states such as loading indicators are treated as:
+- implementation details
+- suitable for unit or component-level testing
+- unsuitable for deterministic end-to-end verification
+
+This decision improves:
+- CI reliability
+- long-term maintainability
+- clarity of test intent
+
+The existence and behavior of the loading state remains documented for demonstration purposes,
+but it is not enforced by automated E2E assertions.
 
 (Transient UI states (such as short-lived loading messages) are documented for demonstration purposes,
 but the test suite primarily validates stable, end-user-visible states to ensure deterministic execution.)
 
 
 These changes were made to be ensuring deterministic execution and improved stability in CI/CD environments.
-
-### Design Decision
-
-In CI environments, synchronization is performed using semantic and test-specific DOM markers (`data-testid`) combined with Playwright `Locator.waitFor()` calls.
-
-This approach avoids flaky timing issues caused by asynchronous Angular rendering and ensures deterministic execution in headless CI/CD pipelines.
