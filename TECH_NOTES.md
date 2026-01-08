@@ -103,6 +103,18 @@ In CI environments, synchronization is performed using semantic and test-specifi
 
 This approach avoids flaky timing issues caused by asynchronous Angular rendering and ensures deterministic execution in headless CI/CD pipelines.
 
+### Asynchronous Data Loading Handling
+
+The Match Details page loads its statistics asynchronously via Angular HttpClient.
+Originally, the Playwright tests waited only for the component container (`.match-details`) to appear, which proved insufficient in CI environments.
+
+To ensure stability, a data-driven wait strategy was introduced.
+The tests now wait until the expected number of statistic list items is rendered in the DOM before accessing their values.
+
+This approach guarantees that assertions are executed only after the actual data has been fully loaded, eliminating flaky timeouts and false failures.
+
+(Note: Although Playwright supports NETWORKIDLE navigation waits, this project primarily relies on DOM-based conditions for Angular pages, as asynchronous data loading may keep the network active even after the UI is ready.)
+
 
 
 # Context: Transient UI States and Test Determinism

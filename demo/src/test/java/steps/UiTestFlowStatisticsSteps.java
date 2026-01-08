@@ -32,7 +32,7 @@ public class UiTestFlowStatisticsSteps {
 
     @When("the page is loaded")
     public void waitForDetails() {
-        page.waitForSelector(".match-details");
+        details.waitForStatisticsLoaded();
     }
 
     @Then("the team names should be visible")

@@ -44,7 +44,7 @@ public class MatchDashboardPage extends MatchDashboardElements {
     }
 
     public void waitForStatusMessage(String expected) {
-        assertThat(statusMessage).hasText(expected); // filter/FilterOptions()
+        assertThat(statusMessage).containsText(expected); // containsText instead of hasText due to Angular whitespace and change detection (or filter/FilterOptions())
     }
 
     public void waitForMatches() {
