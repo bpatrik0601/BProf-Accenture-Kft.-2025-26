@@ -15,7 +15,7 @@ public class MatchDetailsPage extends MatchDetailsElements {
     // Wait methods (critical for CI stability)
     public void waitForStatisticsLoaded() {
         page.waitForFunction(
-            "document.querySelectorAll('.match-details ul li').length > 4"
+            "document.querySelectorAll('.match-details ul li').length === 4"
         );
     }
 
@@ -32,12 +32,10 @@ public class MatchDetailsPage extends MatchDetailsElements {
         return score;
     }
 
-    public Locator getStatistics() {
-        return statistics;
-    }
-
     public Locator getStatisticByLabel(String label) {
-        return statistics.filter(new Locator.FilterOptions().setHasText(label));
+        return page.locator("ul li").filter(
+            new Locator.FilterOptions().setHasText(label)
+        );
     }
 
     // Utility method – value parsing
@@ -56,7 +54,7 @@ public class MatchDetailsPage extends MatchDetailsElements {
     }
 
     public boolean isStatisticsVisible() {
-        return statistics.isVisible();
+        return page.locator(".match-details ul li").first().isVisible();
     }
 
     public String getGoals() {
@@ -81,6 +79,6 @@ public class MatchDetailsPage extends MatchDetailsElements {
 
     // Extra utility – List all statistics
     public List<String> getAllStatistics() {
-        return statistics.allInnerTexts();
+        return page.locator(".match-details ul li").allInnerTexts();
     }
 }

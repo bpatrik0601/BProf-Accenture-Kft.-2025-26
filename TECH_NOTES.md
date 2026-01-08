@@ -113,7 +113,11 @@ The tests now wait until the expected number of statistic list items is rendered
 
 This approach guarantees that assertions are executed only after the actual data has been fully loaded, eliminating flaky timeouts and false failures.
 
-(Note: Although Playwright supports NETWORKIDLE navigation waits, this project primarily relies on DOM-based conditions for Angular pages, as asynchronous data loading may keep the network active even after the UI is ready.)
+(Note: Although Playwright supports NETWORKIDLE navigation waits, this project primarily relies on DOM-based conditions for Angular pages, as asynchronous data loading may keep the network active even after the UI is ready.
+
+In Angular applications, components frequently re-render DOM nodes after async data binding.
+Therefore, Playwright locators should not be cached as fields for dynamic content.
+Instead, locators must be queried fresh at interaction time to avoid stale references.)
 
 
 
