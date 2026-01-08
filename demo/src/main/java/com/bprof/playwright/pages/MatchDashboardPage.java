@@ -5,6 +5,8 @@ import java.util.List;
 import com.bprof.playwright.elements.MatchDashboardElements;
 
 import com.microsoft.playwright.*; // import Page; Locator.
+import com.microsoft.playwright.options.WaitForSelectorState;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class MatchDashboardPage extends MatchDashboardElements {
@@ -58,12 +60,18 @@ public class MatchDashboardPage extends MatchDashboardElements {
     }
 
     public void clickFirstMatchCard() {
+        matchCards.first().scrollIntoViewIfNeeded(); 
+        matchCards.first().waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.ATTACHED));
+        matchCards.first().waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
         matchCards.first().click();
     }
 
 
     public void clickMatchById(String matchId) {
-        page.locator("a[href*='/match/" + matchId + "']").click();
+        Locator card = page.locator("a[href*='/match/" + matchId + "']");
+        card.scrollIntoViewIfNeeded();
+        card.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
+        card.click();
     }
 
     public void clickMatchByTeam(String teamName) {
