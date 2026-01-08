@@ -62,10 +62,14 @@ jobs:
       # ---------------------------------------------------------
       - name: Serve Angular dist
         run: |
-          npx http-server angular-frontend/dist/football-dashboard -p 4200 &
+          npx http-server angular-frontend/dist/football-dashboard/browser -p 4200 --spa &
           npx wait-on http://localhost:4200
       
-      - name: Debug dist folder
+      # ---------------------------------------------------------
+      # Debug: Verify Angular build output structure (Angular 17+).
+      # This step helps confirm that the browser bundle and assets are generated in the expected location for CI serving.
+      # ---------------------------------------------------------
+      - name: Debug Angular build output (dist folder)
         run: |
           ls -R angular-frontend/dist/football-dashboard
 

@@ -149,4 +149,41 @@ but it is not enforced by automated E2E assertions.
 but the test suite primarily validates stable, end-user-visible states to ensure deterministic execution.)
 
 
-These changes were made to be ensuring deterministic execution and improved stability in CI/CD environments.
+These choices were made to be ensuring deterministic execution and improved stability in CI/CD environments.
+
+
+
+# Context: Serving Angular 17+ Build Output in CI
+Starting from Angular 17, the default application builder `@angular/build:application` produces a different build output structure compared to earlier Angular versions, which may cause building issues.
+
+## Build Output Structure
+
+Instead of placing `index.html` and static assets directly in the `dist/<app-name>` directory, Angular now generates the following layout:
+
+dist/<app-name>/
+├── browser/
+├── index.html
+├── assets/
+├── main.<hash>.js
+
+The actual browser application is located inside the `browser/` directory.
+
+## Common CI Pitfall
+
+When serving the application in CI using a static HTTP server (e.g. `http-server`), pointing the server to the build root directory will result in:
+- `index.html` not being found;
+- static assets returning HTTP 404;
+- Angular application not bootstrapping;
+- end-to-end tests (Playwright) timing out.
+
+### Correct Static Server Configuration
+
+To ensure the application and assets are accessible, the static server must serve the `browser/` subdirectory:
+
+```bash
+npx http-server dist/<app-name>/browser -p 4200 --spa
+```
+This guarantees:
+- correct loading of index.html;
+- proper resolution of /assets/** paths;
+- reliable Angular application startup in CI environments.
