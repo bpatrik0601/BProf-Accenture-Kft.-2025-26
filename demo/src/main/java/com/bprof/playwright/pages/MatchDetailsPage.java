@@ -14,7 +14,7 @@ public class MatchDetailsPage extends MatchDetailsElements {
 
     // Wait methods (critical for CI stability)
     public void waitForStatisticsLoaded() {
-        page.waitForFunction(".match-details ul li");
+        page.waitForSelector(".match-details ul li"); // page.waitForFunction("() => document.querySelectorAll('.match-details ul li').length >= 4");
     }
 
     // Basic element getters
