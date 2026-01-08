@@ -62,7 +62,7 @@ jobs:
       # ---------------------------------------------------------
       - name: Serve Angular dist
         run: |
-          npx http-server angular-frontend/dist/football-dashboard/browser -p 4200 --spa &
+          npx http-server angular-frontend/dist/football-dashboard/browser -p 4200 --fallback index.html &
           npx wait-on http://localhost:4200
       
       # ---------------------------------------------------------
