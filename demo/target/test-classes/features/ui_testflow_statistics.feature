@@ -1,14 +1,7 @@
-# (Gherkin / BDD) --> Give (What software will look like to user) -> When (Things that the user will do) -> Then (What the user should expect):
-
 Feature: Match Statistics' Details TestFlow
-  As a football fan
-  I want to see match details
-  So that I can check statistics
 
   Background:
-    Given I open the match dashboard
-    And the matches are loaded
-    And I click the match with id "1001"
+    Given I open the match details for "1001"
     And the page is loaded
 
   Scenario: Statistics visible after load
