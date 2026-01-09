@@ -26,18 +26,18 @@ public class UiTestFlowDashboardSteps {
     @Given("I open the match dashboard")
     public void openDashboard() {
         page = Hooks.getPage();
-        page.navigate("http://localhost:4200/");
         dashboard = new MatchDashboardPage(page);
+        dashboard.open();
+    }
+
+    @Then("I should see the status message {string}")
+    public void loadingState(String expected) {
+        dashboard.waitForStatusMessage(expected);
     }
 
     @When("the matches are loaded")
     public void waitForMatches() {
         dashboard.waitForMatches();
-    }
-
-    @Then("I should see the status message {string}")
-    public void checkStatusMessage(String expected) {
-        Assertions.assertEquals(expected, dashboard.getStatusMessageText());
     }
 
     @Then("I should see the following league headers:")

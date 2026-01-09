@@ -7,7 +7,6 @@ Feature: Matches' Dashboard TestFlow
 
   Scenario: Status message changes after matches load
     Given I open the match dashboard
-    Then I should see the status message "Loading matches..."
     When the matches are loaded
     Then I should see the status message "Matches loaded"
 

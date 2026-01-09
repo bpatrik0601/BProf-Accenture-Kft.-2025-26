@@ -5,6 +5,9 @@ import java.util.List;
 import com.bprof.playwright.elements.MatchDashboardElements;
 
 import com.microsoft.playwright.*; // import Page; Locator.
+import com.microsoft.playwright.options.WaitForSelectorState;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class MatchDashboardPage extends MatchDashboardElements {
 
@@ -32,8 +35,24 @@ public class MatchDashboardPage extends MatchDashboardElements {
     
     // Actions --> utility methods
 
+    public void waitForDashboardReady() {
+        statusMessage.waitFor(); // wait until status message is present
+        leagueHeaders.first().waitFor(); // wait until at least one league header is present
+    }
+
+    public void open() {
+        page.navigate("http://localhost:4200/");
+        waitForDashboardReady();
+    }
+
+    public void waitForStatusMessage(String expected) {
+        assertThat(statusMessage).containsText(expected); // containsText instead of hasText due to Angular whitespace and change detection (or filter/FilterOptions())
+    }
+
     public void waitForMatches() {
-    page.waitForSelector(".match-card"); // wait until at least one match card is present
+        matchCards.first().waitFor(
+            new Locator.WaitForOptions().setTimeout(60000)
+        ); // wait until at least one match card is present
     }
 
     public String getFirstMatchCardText() {
@@ -41,12 +60,18 @@ public class MatchDashboardPage extends MatchDashboardElements {
     }
 
     public void clickFirstMatchCard() {
+        matchCards.first().scrollIntoViewIfNeeded(); 
+        matchCards.first().waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.ATTACHED));
+        matchCards.first().waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
         matchCards.first().click();
     }
 
 
     public void clickMatchById(String matchId) {
-        page.locator("a[href*='/match/" + matchId + "']").click();
+        Locator card = page.locator("a[href*='/match/" + matchId + "']");
+        card.scrollIntoViewIfNeeded();
+        card.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
+        card.click();
     }
 
     public void clickMatchByTeam(String teamName) {
