@@ -189,10 +189,11 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install Angular dependencies
-        run: npm install --prefix angular-frontend
+        run: npm ci --prefix angular-frontend
 
       - name: Run lint (Angular)
-        run: npm run lint:ci --prefix angular-frontend -- --output-file=eslint-report.json --format=json
+        run: npx eslint src --ext .ts --format json -o eslint-report.json
+        working-directory: ./angular-frontend
 
       - name: Upload ESLint report
         if: ${{ hashFiles('angular-frontend/eslint-report.json') != '' }}
