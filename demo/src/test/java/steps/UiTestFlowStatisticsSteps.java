@@ -4,35 +4,38 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 
-import com.microsoft.playwright.*; // import Playwright; Page; Browser; BrowserType.
-
+import com.microsoft.playwright.*;
+import com.bprof.playwright.pages.MatchDashboardPage;
 import com.bprof.playwright.pages.MatchDetailsPage;
 
-/* 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import io.cucumber.java.en.And;
-*/
 import io.cucumber.java.en.*;
-
 import hooks.Hooks;
 
 public class UiTestFlowStatisticsSteps {
+
     private Page page;
+    private MatchDashboardPage dashboard;
     private MatchDetailsPage details;
-    
 
     @Given("I open the match details for {string}")
     public void openMatchDetails(String matchId) {
         page = Hooks.getPage();
-        page.navigate("http://localhost:4200/match/" + matchId);
+
+        // 1) Open dashboard
+        dashboard = new MatchDashboardPage(page);
+        dashboard.open();
+        dashboard.waitForMatches();
+
+        // 2) Click the featured match card
+        dashboard.clickMatchById(matchId);
+
+        // 3) Initialize match details page
         details = new MatchDetailsPage(page);
     }
 
     @When("the page is loaded")
     public void waitForDetails() {
-        page.waitForSelector(".match-details");
+        details.waitForStatisticsLoaded();
     }
 
     @Then("the team names should be visible")
@@ -76,5 +79,4 @@ public class UiTestFlowStatisticsSteps {
         List<String> actualStats = details.getAllStatistics();
         Assertions.assertTrue(actualStats.containsAll(expectedStats));
     }
-
 }
