@@ -142,10 +142,13 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
                     <failOnError>false</failOnError> <!-- useful for CI/CD pipelines -->
                     <xmlOutput>true</xmlOutput>
                     <xmlOutputDirectory>${project.build.directory}</xmlOutputDirectory> <!-- target directory as standard Maven property -->
                     <outputFile>spotbugs-result.xml</outputFile>
+                    <includeTests>true</includeTests>
                 </configuration>
             </plugin>
 
