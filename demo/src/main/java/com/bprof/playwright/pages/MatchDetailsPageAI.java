@@ -1,23 +1,17 @@
 package com.bprof.playwright.pages;
 
-public class MatchDetailsPageAI {
-    
-}
-
-package pages;
-
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import java.util.List;
 
-public class MatchesPage {
+public class MatchDetailsPageAI {
     private final Page page;
     
     // Lokátorok
     private final String matchCards = ".match-card";
     private final String teamNameLabels = ".team-name";
 
-    public MatchesPage(Page page) {
+    public MatchDetailsPageAI(Page page) {
         this.page = page;
     }
 
