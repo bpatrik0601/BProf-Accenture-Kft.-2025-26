@@ -1,13 +1,11 @@
 package com.bprof.playwright.pages;
 
-import java.util.List;
-
 import com.bprof.playwright.elements.MatchDashboardElements;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
 
-import com.microsoft.playwright.*; // import Page; Locator.
-import com.microsoft.playwright.options.WaitForSelectorState;
-
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MatchDashboardPage extends MatchDashboardElements {
 
@@ -15,74 +13,108 @@ public class MatchDashboardPage extends MatchDashboardElements {
         super(page);
     }
 
-    // Basic element getters
-    public Locator getStatusMessage() {
-        return statusMessage;
+    // Wait methods (critical for CI stability)
+    public void waitForMatchesLoaded() {
+        page.waitForSelector(".match-card");
     }
 
-    public List<String> getLeagueHeadersText() {
-        return leagueHeaders.allInnerTexts();
+    public void waitForStatusMessage() {
+        page.waitForSelector("[data-testid='status-message']");
     }
 
-    public List<Locator> getAllMatchCards() {
-        return matchCards.all();
+    // Status and validation
+    public String getStatusMessage() {
+        return statusMessage.innerText();
     }
 
-    public Locator getMatchCardByTeam(String teamName) {
-        return matchCards.filter(new Locator.FilterOptions().setHasText(teamName));
+    public boolean isStatusMessageVisible() {
+        return statusMessage.isVisible();
     }
 
-    
-    // Actions --> utility methods
-
-    public void waitForDashboardReady() {
-        statusMessage.waitFor(); // wait until status message is present
-        leagueHeaders.first().waitFor(); // wait until at least one league header is present
-    }
-
-    public void open() {
-        page.navigate("http://localhost:4200/");
-        waitForDashboardReady();
-    }
-
-    public void waitForStatusMessage(String expected) {
-        assertThat(statusMessage).containsText(expected); // containsText instead of hasText due to Angular whitespace and change detection (or filter/FilterOptions())
-    }
-
-    public void waitForMatches() {
-        matchCards.first().waitFor(
-            new Locator.WaitForOptions().setTimeout(60000)
-        ); // wait until at least one match card is present
-    }
-
-    public String getFirstMatchCardText() {
-        return matchCards.first().innerText();
-    }
-
-    public void clickFirstMatchCard() {
-        matchCards.first().scrollIntoViewIfNeeded(); 
-        matchCards.first().waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.ATTACHED));
-        matchCards.first().waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
-        matchCards.first().click();
-    }
-
-
-    public void clickMatchById(String matchId) {
-        Locator card = page.locator("a[href*='/match/" + matchId + "']");
-        card.scrollIntoViewIfNeeded();
-        card.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
-        card.click();
-    }
-
-    public void clickMatchByTeam(String teamName) {
-        getMatchCardByTeam(teamName).click();
-    }
-
+    // Match count and availability
     public int getMatchCount() {
         return matchCards.count();
     }
 
-    public String getStatusMessageText() {
-        return getStatusMessage().innerText();
+    public boolean hasMatches() {
+        return getMatchCount() > 0;
+    }
+
+    // League information
+    public List<String> getLeagueNames() {
+        return leagueHeaders.allInnerTexts();
+    }
+
+    public int getLeagueCount() {
+        return leagueHeaders.count();
+    }
+
+    // Match card details
+    public String getMatchCardText(int index) {
+        return matchCards.nth(index).innerText();
+    }
+
+    public List<String> getAllMatchCards() {
+        return matchCards.allInnerTexts();
+    }
+
+    // Extract match details by index
+    public MatchDetails getMatchDetails(int index) {
+        Locator card = matchCards.nth(index);
+        String text = card.innerText();
+
+        // Parse format: "Date\nHome Team Score - Score Away Team"
+        MatchDetails details = new MatchDetails();
+        details.rawText = text;
+        details.backgroundColor = card.evaluate("el => window.getComputedStyle(el).backgroundColor").toString();
+
+        return details;
+    }
+
+    // Result color verification (based on Angular logic)
+    public String getMatchResultColor(int index) {
+        Locator card = matchCards.nth(index);
+        return card.evaluate("el => window.getComputedStyle(el).backgroundColor").toString();
+    }
+
+    public boolean isHomeWinColor(int index) {
+        // Home win: #b8f7b8 (light green)
+        String color = getMatchResultColor(index);
+        return color.contains("184") || color.contains("rgb(184, 247, 184)");
+    }
+
+    public boolean isAwayWinColor(int index) {
+        // Away win: #f7b8b8 (light red)
+        String color = getMatchResultColor(index);
+        return color.contains("247, 184, 184") || color.contains("rgb(247, 184, 184)");
+    }
+
+    public boolean isDrawColor(int index) {
+        // Draw: #f7f3b8 (light yellow)
+        String color = getMatchResultColor(index);
+        return color.contains("247, 243, 184") || color.contains("rgb(247, 243, 184)");
+    }
+
+    // Navigation to match details
+    public void clickMatch(int index) {
+        matchCards.nth(index).locator("a").click();
+    }
+
+    public void clickMatchByTeams(String homeTeam, String awayTeam) {
+        Locator matchCard = matchCards.filter(
+            new Locator.FilterOptions()
+                .setHasText(homeTeam)
+                .setHasText(awayTeam)
+        ).first();
+        matchCard.locator("a").click();
+    }
+
+    // Utility: Inner class for match details
+    public static class MatchDetails {
+        public String rawText;
+        public String backgroundColor;
+
+        public MatchDetails() {
+        }
     }
 }

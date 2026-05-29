@@ -1,8 +1,9 @@
-# language: hu
-Jellemző: Meccsek listájának megjelenítése
+# Initial AI testing, left in for display
 
-  Forgatókönyv: Meccsek sikeres betöltése és megjelenítése a felületen
-    Adott a felhasználó megnyitja a meccsek aloldalt
-    Amikor a rendszer betölti a "matches.json" adatfájlt
-    Akkor a listában meg kell jelenniük a csapatok neveinek
-    És a meccsek számának egyeznie kell a forrásfájlban lévő adatokkal
+Feature: Displaying a list of matches
+
+  Scenario: Successfully loading and displaying matches on the interface
+    Given the user opens the matches subpage
+    When the system loads the "matches.json" data file
+    Then the names of the teams should appear in the list
+    And the number of matches should match the data in the source file
