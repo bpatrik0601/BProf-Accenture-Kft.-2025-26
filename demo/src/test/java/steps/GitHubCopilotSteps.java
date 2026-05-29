@@ -12,7 +12,7 @@ import io.cucumber.java.en.When;
 
 public class GitHubCopilotSteps {
     private Page page;
-    private MatchDashboardPage dashboard;
+    private MatchDashboardPage dashboard; // unused page object to demonstrate code generation, not used in actual tests due to stability issues with locators, needs fixing in the page object
 
     @Given("I open the match dashboard")
     public void openDashboard() {

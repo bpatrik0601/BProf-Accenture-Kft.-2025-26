@@ -4,13 +4,48 @@ import com.bprof.playwright.elements.MatchDashboardElements;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import java.util.ArrayList;
+import java.util.ArrayList; // <-- for returning lists of strings instead of locators: unused in the current version but can be useful for test assertions and readability
 import java.util.List;
 
 public class MatchDashboardPage extends MatchDashboardElements {
 
     public MatchDashboardPage(Page page) {
         super(page);
+    }
+
+    // Navigation --> 4. experiment
+    public void open() {
+        page.navigate("http://localhost:4200/dashboard"); // Adjust URL to match your app
+    }
+
+    // Click match by ID (assumes HTML data-id or similar) --> 4. experiment
+    public void clickMatchById(String matchId) {
+        Locator matchElement = page.locator("[data-id='" + matchId + "']");
+        matchElement.locator("a").click();
+    }
+
+    // 4. experiment: Or if matches are identified by visible text/teams instead / if there's no data-id, we can use text-based filtering  
+    public void clickMatchByIdentifier(String identifier) { // e.g. "Team A vs Team B" or "Team A"
+        Locator matchCard = matchCards.filter(
+            new Locator.FilterOptions().setHasText(identifier)
+        ).first();
+        matchCard.locator("a").click();
+    }
+
+    // 5. experiment: stable locator and waiting strategy
+    public void clickMatchByIdWithStableLocator(String matchId) {
+        // Wait for async data to load
+        page.waitForSelector("[data-testid='status-message']");
+        
+        // Wait for match cards to render
+        page.waitForSelector(".match-card");
+        
+        // Click the specific match by href
+        String href = "/match/" + matchId;
+        page.locator("a[href='" + href + "']").click();
+        
+        // Wait for navigation to complete
+        // page.waitForNavigation(); // --> Error: The method waitForNavigation(Runnable) in the type Page is not applicable for the arguments ()
     }
 
     // Wait methods (critical for CI stability)
