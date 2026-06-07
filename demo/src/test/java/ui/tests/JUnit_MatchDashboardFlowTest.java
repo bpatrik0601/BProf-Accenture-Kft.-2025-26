@@ -7,13 +7,13 @@ import java.util.List;
 
 import org.junit.jupiter.api.*;
 
-import com.bprof.playwright.pages.MatchDashboardPage;
+import com.bprof.playwright.pages.MatchDashboardPageOriginal;
 
 public class JUnit_MatchDashboardFlowTest { // status message, number of match cards, click navigation
     static Playwright playwright;
     static Browser browser;
     Page page;
-    MatchDashboardPage dashboard;
+    MatchDashboardPageOriginal dashboard;
 
     @BeforeAll
     static void setupClass() {
@@ -25,7 +25,7 @@ public class JUnit_MatchDashboardFlowTest { // status message, number of match c
     void setup() {
         page = browser.newPage();
         page.navigate("http://localhost:4200/");
-        dashboard = new MatchDashboardPage(page);
+        dashboard = new MatchDashboardPageOriginal(page);
     }
 
     @Test

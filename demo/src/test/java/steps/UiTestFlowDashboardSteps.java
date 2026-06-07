@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 
 import com.microsoft.playwright.*; // import Playwright; Page; Browser; BrowserType.
 
-import com.bprof.playwright.pages.MatchDashboardPage;
+import com.bprof.playwright.pages.MatchDashboardPageOriginal; // <-- using the original page object for stability
 
 /* 
 import io.cucumber.java.en.Given;
@@ -20,13 +20,13 @@ import hooks.Hooks;
 
 public class UiTestFlowDashboardSteps {
     private Page page;
-    private MatchDashboardPage dashboard;
+    private MatchDashboardPageOriginal dashboard;
 
 
     @Given("I open the match dashboard")
     public void openDashboard() {
         page = Hooks.getPage();
-        dashboard = new MatchDashboardPage(page);
+        dashboard = new MatchDashboardPageOriginal(page);
         dashboard.open();
     }
 

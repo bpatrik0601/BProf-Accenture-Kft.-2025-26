@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 
 import com.microsoft.playwright.*;
-import com.bprof.playwright.pages.MatchDashboardPage;
+import com.bprof.playwright.pages.MatchDashboardPageOriginal;
 import com.bprof.playwright.pages.MatchDetailsPage;
 
 import io.cucumber.java.en.*;
@@ -14,7 +14,7 @@ import hooks.Hooks;
 public class UiTestFlowStatisticsSteps {
 
     private Page page;
-    private MatchDashboardPage dashboard;
+    private MatchDashboardPageOriginal dashboard;
     private MatchDetailsPage details;
 
     @Given("I open the match details for {string}")
@@ -22,7 +22,7 @@ public class UiTestFlowStatisticsSteps {
         page = Hooks.getPage();
 
         // 1) Open dashboard
-        dashboard = new MatchDashboardPage(page);
+        dashboard = new MatchDashboardPageOriginal(page);
         dashboard.open();
         dashboard.waitForMatches();
 
